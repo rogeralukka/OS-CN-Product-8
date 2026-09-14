@@ -1,0 +1,374 @@
+/*
+  style.css
+  Exact 2-Row Layout: Inputs Top, Process Steps Bottom
+*/
+
+:root {
+  --bg: #f5f4f0;
+  --surface: #ffffff;
+  --border: #e0ddd4;
+  --text: #1a1a1a;
+  --text-muted: #6b6b6b;
+  --accent: #2563eb;
+  --accent-text: #ffffff;
+  --success-bg: #dcfce7;
+  --success-text: #166534;
+  --success-border: #86efac;
+  --danger-bg: #fee2e2;
+  --danger-text: #991b1b;
+  --danger-border: #fca5a5;
+  --step-bg: #faf9f6;
+  --step-border: #eae7de;
+}
+
+[data-theme="dark"] {
+  --bg: #0f0f0f;
+  --surface: #1a1a1a;
+  --border: #2a2a2a;
+  --text: #f0f0f0;
+  --text-muted: #888888;
+  --accent: #3b82f6;
+  --accent-text: #ffffff;
+  --success-bg: #052e16;
+  --success-text: #4ade80;
+  --success-border: #166534;
+  --danger-bg: #450a0a;
+  --danger-text: #f87171;
+  --danger-border: #991b1b;
+  --step-bg: #141414;
+  --step-border: #242424;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100vh;
+  overflow: hidden; /* No page scroll */
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.font-mono {
+  font-family: 'SF Mono', 'Courier New', monospace !important;
+  word-break: break-all;
+}
+
+/* ========================================= */
+/* NAVBAR (Full Width, 56px)                 */
+/* ========================================= */
+.navbar {
+  height: 56px;
+  background-color: var(--bg);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.nav-content {
+  width: 100%;
+  padding: 0 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.nav-title {
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+/* Toggle Button: NO BOX, NO BORDER, NO BG */
+.theme-icon-btn {
+  background: none;
+  border: none;
+  padding: 4px;
+  margin: 0;
+  cursor: pointer;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+}
+
+.theme-icon-btn:hover {
+  opacity: 0.75;
+}
+
+.icon-svg {
+  display: block;
+}
+
+/* ========================================= */
+/* MAIN 2-ROW CONTAINER                      */
+/* ========================================= */
+.main-container {
+  width: 100%;
+  height: calc(100vh - 56px);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow: hidden;
+}
+
+/* Grid Rows */
+.grid-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  width: 100%;
+}
+
+.row-inputs {
+  flex-shrink: 0;
+}
+
+.row-steps {
+  flex: 1;
+  min-height: 0; /* Important for flex-1 nested scroll */
+}
+
+/* ========================================= */
+/* CARDS & HEADINGS                          */
+/* ========================================= */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.input-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.steps-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+  min-height: 0;
+}
+
+.card-heading {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* Textarea (110px height, resize none) */
+.log-textarea {
+  width: 100%;
+  height: 110px;
+  min-height: 110px;
+  max-height: 110px;
+  background-color: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-family: inherit;
+  resize: none;
+  line-height: 1.4;
+}
+
+.log-textarea:focus, .input-text:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* Button & Action Rows */
+.button-group {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.action-row-split {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.crc-input-inline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.field-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.input-text {
+  flex: 1;
+  background-color: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 7px 10px;
+  font-size: 12px;
+}
+
+/* Buttons */
+.btn {
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  transition: opacity 0.12s ease;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--accent-text);
+  border: none;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+  background-color: var(--step-bg);
+}
+
+.btn-full {
+  width: 100%;
+}
+
+/* ========================================= */
+/* PROCESS STEPS CONTAINER (Scrollable)      */
+/* ========================================= */
+.steps-scroll-container {
+  background-color: var(--step-bg);
+  border: 1px solid var(--step-border);
+  border-radius: 6px;
+  padding: 12px 14px;
+  padding-right: 8px; /* space between content and scrollbar */
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+/* WebKit (Chrome, Edge, Safari) */
+.steps-scroll-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.steps-scroll-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.steps-scroll-container::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+.steps-scroll-container::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+.step-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.step-title {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+}
+
+.step-data {
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.4;
+}
+
+.step-subdata {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* ========================================= */
+/* COMPACT RESULT CHIP (~40px)               */
+/* ========================================= */
+.result-chip {
+  height: 40px;
+  min-height: 40px;
+  border-radius: 6px;
+  padding: 0 14px;
+  display: flex;
+  align-items: center;
+  font-size: 13.5px;
+  font-weight: 600;
+  border: 1px solid transparent;
+  flex-shrink: 0;
+}
+
+.result-chip.accept {
+  background-color: var(--success-bg);
+  color: var(--success-text);
+  border-color: var(--success-border);
+}
+
+.result-chip.reject {
+  background-color: var(--danger-bg);
+  color: var(--danger-text);
+  border-color: var(--danger-border);
+}
+
+.hidden {
+  display: none !important;
+}

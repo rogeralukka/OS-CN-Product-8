@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Industrial Machine Log Integrity Checker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- NAVBAR (Full width, 56px) -->
+  <nav class="navbar">
+    <div class="nav-content">
+      <span class="nav-title">Industrial Machine Log Integrity Checker</span>
+      
+      <!-- Plain icon button (no box, no border, no background) -->
+      <button id="themeToggleBtn" class="theme-icon-btn" aria-label="Toggle Theme" title="Toggle Light/Dark Theme">
+        <!-- Sun SVG (for dark mode) -->
+        <svg id="sunIcon" class="icon-svg hidden" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <!-- Moon SVG (for light mode) -->
+        <svg id="moonIcon" class="icon-svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTAINER (2 Rows Layout) -->
+  <main class="main-container">
+
+    <!-- ========================================= -->
+    <!-- ROW 1 (TOP) — 2 INPUT CARDS               -->
+    <!-- ========================================= -->
+    <div class="grid-row row-inputs">
+      
+      <!-- ROW 1 LEFT: Original Machine Log -->
+      <section class="card input-card">
+        <h2 class="card-heading">Original Machine Log</h2>
+        <textarea id="originalLogInput" class="log-textarea" placeholder="Type or paste original log message here..."></textarea>
+        <div class="button-group">
+          <label class="btn btn-secondary">
+            Upload File
+            <input type="file" id="originalFileInput" accept=".txt,.log,.md" hidden>
+          </label>
+          <button id="originalRandomBtn" class="btn btn-secondary">Random Log</button>
+          <button id="computeCrcBtn" class="btn btn-primary">Compute CRC</button>
+        </div>
+      </section>
+
+      <!-- ROW 1 RIGHT: Received Log & Verification -->
+      <section class="card input-card">
+        <h2 class="card-heading">Received Log &amp; Verification</h2>
+        <textarea id="receivedLogInput" class="log-textarea" placeholder="Type or paste received log message here..."></textarea>
+        
+        <div class="action-row-split">
+          <div class="button-group">
+            <label class="btn btn-secondary">
+              Upload File
+              <input type="file" id="receivedFileInput" accept=".txt,.log,.md" hidden>
+            </label>
+            <button id="receivedRandomBtn" class="btn btn-secondary">Random Log</button>
+          </div>
+          
+          <div class="crc-input-inline">
+            <label for="receivedCrcInput" class="field-label">CRC (from sender):</label>
+            <input type="text" id="receivedCrcInput" class="input-text font-mono" placeholder="32-bit binary / hex">
+          </div>
+        </div>
+
+        <button id="verifyIntegrityBtn" class="btn btn-primary btn-full">Verify Integrity</button>
+      </section>
+
+    </div>
+
+    <!-- ========================================= -->
+    <!-- ROW 2 (BOTTOM) — 2 PROCESS STEPS CARDS    -->
+    <!-- ========================================= -->
+    <div class="grid-row row-steps">
+      
+      <!-- ROW 2 LEFT: Process Steps — Original -->
+      <section class="card steps-card">
+        <h2 class="card-heading">Process Steps — Original Machine Log</h2>
+        <div class="steps-scroll-container" id="originalStepsBox">
+          <div class="step-item">
+            <span class="step-title">STEP 1 — Original Text</span>
+            <div class="step-data" id="step1OriginalText"><em>[waiting for input...]</em></div>
+          </div>
+
+          <div class="step-item">
+            <span class="step-title">STEP 2 — ASCII &rarr; Binary</span>
+            <div class="step-data font-mono" id="step2OriginalBinary"><em>[waiting for compute...]</em></div>
+          </div>
+
+          <div class="step-item">
+            <span class="step-title">STEP 3 — Padded Message (+32 zeros)</span>
+            <div class="step-data font-mono" id="step3OriginalPadded"><em>[waiting for compute...]</em></div>
+          </div>
+
+          <div class="step-item">
+            <span class="step-title">STEP 4 — Generator Polynomial (33-bit)</span>
+            <div class="step-data font-mono" id="step4OriginalDivisor">Loading...</div>
+          </div>
+
+          <div class="step-item">
+            <span class="step-title">STEP 5 — Remainder (CRC-32)</span>
+            <div class="step-data font-mono" id="step5OriginalCrc"><em>[waiting for compute...]</em></div>
+            <div class="step-subdata font-mono" id="step5OriginalHex">Hex: --</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ROW 2 RIGHT: Process Steps — Received -->
+      <section class="card steps-card">
+        <h2 class="card-heading">Process Steps — Received Log</h2>
+        <div class="steps-scroll-container" id="receivedStepsBox">
+          <div class="step-item">
+            <span class="step-title">STEP 1 — Received Text</span>
+            <div class="step-data" id="step1ReceivedText"><em>[waiting for input...]</em></div>
+          </div>
+
+          <div class="step-item">
+            <span class="step-title">STEP 2 — ASCII &rarr; Binary</span>
+            <div class="step-data font-mono" id="step2ReceivedBinary"><em>[waiting for verify...]</em></div>
+          </div>
+
+          <div class="step-item">
+            <span class="step-title">STEP 3 — Codeword = Received Bits + Received CRC</span>
+            <div class="step-data font-mono" id="step3ReceivedCodeword"><em>[waiting for verify...]</em></div>
+          </div>
+
+          <div class="step-item">
+            <span class="step-title">STEP 4 — Generator Polynomial (33-bit)</span>
+            <div class="step-data font-mono" id="step4ReceivedDivisor">Loading...</div>
+          </div>
+
+          <div class="step-item">
+            <span class="step-title">STEP 5 — Remainder after division</span>
+            <div class="step-data font-mono" id="step5ReceivedRemainder"><em>[waiting for verify...]</em></div>
+          </div>
+
+          <div class="step-item">
+            <span class="step-title">STEP 6 — Result</span>
+            <div class="step-data" id="step6ReceivedResult"><em>[waiting for verify...]</em></div>
+          </div>
+        </div>
+
+        <!-- Compact Result Chip (~40px height) -->
+        <div id="resultChip" class="result-chip hidden">
+          <!-- Populated by JS -->
+        </div>
+      </section>
+
+    </div>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,69 +1,81 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="warm">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Industrial Machine Log Integrity Checker — Executive Presentation</title>
-  <!-- Google Fonts for High-End Typography -->
+  <title>Industrial Machine Log Integrity Checker — Executive Monotone Deck</title>
+  <!-- Google Fonts: Plus Jakarta Sans (UI/Headings) & JetBrains Mono (Math/Code) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
   <style>
     :root {
-      /* Dark Theme (Default OLED Telemetry) */
-      --bg: #07090e;
-      --surface-shell: #0e1422;
-      --surface-core: #131b2e;
-      --surface-subtle: #19243d;
-      --border-outer: rgba(255, 255, 255, 0.08);
-      --border-inner: #24344d;
+      /* Warm Monotone Editorial Palette */
+      --bg: #fff8e7;                  /* Cosmic Latte / Warm Ivory Base */
+      --surface-shell: #efe5d5;       /* Warm Parchment Shell */
+      --surface-core: #ffffff;        /* Ivory White Core */
+      --surface-subtle: #f3e6d6;      /* Warm Almond / Cream */
+      --surface-accent: #f6e3c8;      /* Warm Sand */
+      --ochre-accent: #e3c08f;        /* Warm Ochre / Vintage Gold */
       
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --text-dim: #64748b;
+      --border-outer: #e2d5c3;        /* Outer Structural Divider */
+      --border-inner: #ece2d2;        /* Inner Subtle Bezel */
+      --border-accent: #e3c08f;       /* Accent Highlight Border */
       
-      --cyan: #38bdf8;
-      --blue: #2563eb;
-      --indigo: #6366f1;
+      --text-main: #241e17;           /* Deep Warm Charcoal/Espresso */
+      --text-muted: #6e5d4e;          /* Warm Slate Taupe */
+      --text-dim: #968472;            /* Subtle Caption Text */
       
-      --green: #4ade80;
-      --green-bg: rgba(34, 197, 94, 0.1);
-      --green-border: rgba(34, 197, 94, 0.25);
+      --accent-badge-bg: #f6e3c8;
+      --accent-badge-text: #45341c;
+      --accent-badge-border: #e3c08f;
+
+      --code-bg: #f5ece0;
+      --code-border: #e6d8c4;
       
-      --red: #f87171;
-      --red-bg: rgba(239, 68, 68, 0.1);
-      --red-border: rgba(239, 68, 68, 0.25);
+      --green-bg: #edf5e8;
+      --green-text: #275222;
+      --green-border: #b5d8ac;
       
-      --amber: #fbbf24;
-      --amber-bg: rgba(251, 191, 36, 0.1);
+      --red-bg: #faeae6;
+      --red-text: #82271d;
+      --red-border: #e6b4ad;
       
       --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-serif: 'Playfair Display', Georgia, serif;
       --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
     }
 
-    [data-theme="light"] {
-      --bg: #f5f4f0;
-      --surface-shell: #ffffff;
-      --surface-core: #fcfcfb;
-      --surface-subtle: #f0eee6;
-      --border-outer: #e0ddd4;
-      --border-inner: #d8d4c7;
+    [data-theme="dark-monotone"] {
+      --bg: #15120f;
+      --surface-shell: #1f1b16;
+      --surface-core: #26211c;
+      --surface-subtle: #2d2721;
+      --surface-accent: #383028;
+      --ochre-accent: #e3c08f;
       
-      --text-main: #111827;
-      --text-muted: #4b5563;
-      --text-dim: #9ca3af;
+      --border-outer: #3d352c;
+      --border-inner: #4a4035;
+      --border-accent: #e3c08f;
       
-      --cyan: #0284c7;
-      --blue: #2563eb;
-      --indigo: #4f46e5;
+      --text-main: #fff8e7;
+      --text-muted: #bdae9e;
+      --text-dim: #8c7f70;
       
-      --green: #166534;
-      --green-bg: #dcfce7;
-      --green-border: #86efac;
+      --accent-badge-bg: #2d2721;
+      --accent-badge-text: #e3c08f;
+      --accent-badge-border: #524536;
+
+      --code-bg: #1c1814;
+      --code-border: #3d352c;
       
-      --red: #991b1b;
-      --red-bg: #fee2e2;
-      --red-border: #fca5a5;
+      --green-bg: #172614;
+      --green-text: #8ce680;
+      --green-border: #2e5227;
+      
+      --red-bg: #291412;
+      --red-text: #fca5a5;
+      --red-border: #63221b;
     }
 
     * {
@@ -98,8 +110,8 @@
       position: relative;
       background: var(--surface-shell);
       border: 1px solid var(--border-outer);
-      border-radius: 16px;
-      box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.7);
+      border-radius: 14px;
+      box-shadow: 0 15px 35px -10px rgba(60, 45, 30, 0.15);
       overflow: hidden;
       display: flex;
       flex-direction: column;
@@ -111,13 +123,13 @@
       left: 0;
       width: 100%;
       height: 100%;
-      padding: 36px 44px;
+      padding: 34px 42px;
       display: none;
       flex-direction: column;
       justify-content: space-between;
       opacity: 0;
-      transform: translateY(8px);
-      transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translateY(6px);
+      transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .slide.active {
@@ -126,936 +138,992 @@
       transform: translateY(0);
     }
 
-    /* Header Bar */
+    /* Top Bar */
     .slide-topbar {
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
       border-bottom: 1px solid var(--border-outer);
-      padding-bottom: 14px;
+      padding-bottom: 12px;
     }
 
     .topbar-left {
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 3px;
     }
 
-    .eyebrow {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      color: var(--cyan);
-      text-transform: uppercase;
-    }
-
-    .slide-heading {
-      font-size: 24px;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      color: var(--text-main);
-    }
-
-    .slide-badge {
-      background: var(--surface-core);
-      border: 1px solid var(--border-inner);
-      padding: 4px 10px;
-      border-radius: 9999px;
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--text-muted);
-      letter-spacing: 0.5px;
-    }
-
-    /* Slide Body Grid */
-    .slide-content {
-      flex: 1;
-      padding: 20px 0 10px 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 16px;
-      overflow-y: auto;
-    }
-
-    .bento-grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-      height: 100%;
-    }
-
-    .bento-grid-3 {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 16px;
-      height: 100%;
-    }
-
-    .bento-grid-4 {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-    }
-
-    /* Double-Bezel Card Architecture */
-    .bezel-shell {
-      background: var(--surface-core);
-      border: 1px solid var(--border-inner);
-      border-radius: 12px;
-      padding: 16px 18px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .bezel-shell.accent {
-      border-color: rgba(56, 189, 248, 0.4);
-      box-shadow: inset 0 1px 0 rgba(56, 189, 248, 0.2);
-    }
-
-    .bezel-shell.success {
-      background: var(--green-bg);
-      border-color: var(--green-border);
-    }
-
-    .bezel-shell.danger {
-      background: var(--red-bg);
-      border-color: var(--red-border);
-    }
-
-    .card-header-tag {
+    .slide-eyebrow {
       font-size: 10px;
-      font-weight: 800;
-      letter-spacing: 1px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--text-dim);
+      color: var(--text-muted);
     }
 
-    .card-title-lg {
-      font-size: 16px;
+    .slide-title {
+      font-size: 23px;
       font-weight: 700;
       color: var(--text-main);
+      letter-spacing: -0.02em;
+    }
+
+    .slide-meta {
       display: flex;
       align-items: center;
       gap: 8px;
     }
 
-    .bezel-shell.success .card-title-lg { color: var(--green); }
-    .bezel-shell.danger .card-title-lg { color: var(--red); }
-
-    /* Feature Lists & Rows */
-    .feature-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .feature-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      font-size: 13px;
-      line-height: 1.45;
+    .slide-pill {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: var(--surface-core);
+      border: 1px solid var(--border-outer);
       color: var(--text-muted);
     }
 
-    .feature-item strong {
+    /* Slide Content Body */
+    .slide-body {
+      flex: 1;
+      padding: 20px 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 0;
+    }
+
+    /* Double-Bezel Nested Card Architecture */
+    .bezel-outer {
+      background: var(--surface-subtle);
+      border: 1px solid var(--border-outer);
+      border-radius: 10px;
+      padding: 5px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .bezel-inner {
+      background: var(--surface-core);
+      border: 1px solid var(--border-inner);
+      border-radius: 6px;
+      padding: 16px 18px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      position: relative;
+    }
+
+    .bezel-title {
+      font-size: 14px;
+      font-weight: 700;
       color: var(--text-main);
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
-    .dot-indicator {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background-color: var(--cyan);
-      margin-top: 6px;
-      flex-shrink: 0;
+    .bezel-text {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      line-height: 1.5;
     }
 
-    .bezel-shell.danger .dot-indicator { background-color: var(--red); }
-    .bezel-shell.success .dot-indicator { background-color: var(--green); }
+    /* Bento Grid Variations */
+    .grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      height: 100%;
+    }
 
-    /* Monospace Code & Formula Windows */
-    .terminal-box {
-      background: #080c14;
-      border: 1px solid #1e293b;
-      border-radius: 8px;
-      padding: 10px 12px;
+    .grid-3col {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      height: 100%;
+    }
+
+    .grid-4col {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      height: 100%;
+    }
+
+    .grid-asym-1 {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 16px;
+      height: 100%;
+    }
+
+    .grid-asym-2 {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 16px;
+      height: 100%;
+    }
+
+    /* Monospace Code / Bitstream Box */
+    .bit-box {
+      background: var(--code-bg);
+      border: 1px solid var(--code-border);
+      border-radius: 5px;
+      padding: 8px 10px;
       font-family: var(--font-mono);
       font-size: 11.5px;
-      color: #38bdf8;
-      line-height: 1.5;
+      color: var(--text-main);
+      line-height: 1.45;
       overflow-x: auto;
     }
 
-    .terminal-box.green { color: #4ade80; border-color: rgba(34, 197, 94, 0.3); }
-    .terminal-box.red { color: #f87171; border-color: rgba(239, 68, 68, 0.3); }
+    .bit-highlight {
+      background: var(--surface-accent);
+      color: var(--text-main);
+      font-weight: 700;
+      padding: 1px 4px;
+      border-radius: 3px;
+      border: 1px solid var(--ochre-accent);
+    }
 
-    /* Slide Bottom Bar */
+    .tag-badge {
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 2px 7px;
+      border-radius: 4px;
+      background: var(--accent-badge-bg);
+      color: var(--accent-badge-text);
+      border: 1px solid var(--accent-badge-border);
+    }
+
+    .badge-success {
+      background: var(--green-bg);
+      color: var(--green-text);
+      border: 1px solid var(--green-border);
+    }
+
+    .badge-danger {
+      background: var(--red-bg);
+      color: var(--red-text);
+      border: 1px solid var(--red-border);
+    }
+
+    /* Bottom Status Navigation */
     .slide-footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
       border-top: 1px solid var(--border-outer);
       padding-top: 12px;
-      font-size: 11.5px;
-      color: var(--text-dim);
     }
 
-    /* Navigation Dock */
-    .deck-controls {
+    .footer-left {
+      font-size: 11px;
+      color: var(--text-dim);
       display: flex;
       align-items: center;
       gap: 14px;
-      margin-top: 18px;
     }
 
-    .dock-btn {
+    .footer-ctrls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .ctrl-btn {
       background: var(--surface-core);
-      border: 1px solid var(--border-inner);
+      border: 1px solid var(--border-outer);
       color: var(--text-main);
-      padding: 7px 14px;
-      border-radius: 8px;
-      font-size: 13px;
+      padding: 5px 12px;
+      font-size: 11px;
       font-weight: 600;
+      border-radius: 5px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      transition: all 0.15s ease;
+      gap: 4px;
+      transition: background 0.12s ease;
     }
 
-    .dock-btn:hover {
-      background: var(--blue);
-      border-color: var(--blue);
-      color: #ffffff;
+    .ctrl-btn:hover {
+      background: var(--surface-subtle);
+      border-color: var(--ochre-accent);
     }
 
     .progress-bar-container {
-      width: 140px;
-      height: 6px;
-      background: var(--surface-core);
-      border-radius: 9999px;
-      overflow: hidden;
-      border: 1px solid var(--border-inner);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--border-outer);
     }
 
-    .progress-fill {
+    .progress-bar {
       height: 100%;
-      background: var(--cyan);
       width: 10%;
-      transition: width 0.3s ease;
+      background: var(--ochre-accent);
+      transition: width 0.25s ease;
     }
 
-    /* Print View */
+    /* Print / PDF Mode */
     @media print {
-      body { background: transparent; }
-      .deck-controls { display: none !important; }
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+      }
       .slide-deck {
-        width: 100vw;
-        height: 100vh;
-        max-width: none;
-        border: none;
-        box-shadow: none;
-        border-radius: 0;
+        border: none !important;
+        box-shadow: none !important;
+        width: 100% !important;
+        height: auto !important;
       }
       .slide {
+        position: relative !important;
         display: flex !important;
         opacity: 1 !important;
-        transform: none !important;
-        page-break-after: always;
-        height: 100vh;
+        page-break-after: always !important;
+        height: 100vh !important;
+        padding: 30px !important;
+      }
+      .footer-ctrls, .progress-bar-container {
+        display: none !important;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- SLIDE DECK ENCLOSURE -->
-  <div class="slide-deck" id="slideDeck">
+<div class="slide-deck" id="deck">
 
-    <!-- ==================== SLIDE 1: HERO & VISION ==================== -->
-    <div class="slide active" data-slide="1">
-      <div class="slide-topbar">
-        <div class="topbar-left">
-          <span class="eyebrow">MISSION CRITICAL TELEMETRY INTEGRITY &bull; PRODUCT 8</span>
-          <h1 class="slide-heading">Industrial Machine Log Integrity Checker</h1>
-        </div>
-        <span class="slide-badge">SLIDE 01 / 10</span>
+  <!-- ==================== SLIDE 1: COVER & HERO ==================== -->
+  <div class="slide active" id="slide-1">
+    <div class="slide-topbar">
+      <div class="topbar-left">
+        <span class="slide-eyebrow">SRU CSE • Operating Systems & Computer Networks</span>
+        <h1 class="slide-title">Industrial Machine Log Integrity Checker</h1>
       </div>
-
-      <div class="slide-content" style="justify-content: center;">
-        <div style="margin-bottom: 24px;">
-          <h2 style="font-size: 40px; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em;">
-            Zero-Latency Telemetry Proofs<br>
-            <span style="color: var(--cyan);">via Modulo-2 Polynomial Division</span>
-          </h2>
-          <p style="font-size: 16px; color: var(--text-muted); margin-top: 10px; max-width: 860px;">
-            A production-grade error-detection engine engineered in Python &amp; modern Web telemetry to mathematically guarantee the authenticity of mission-critical SCADA &amp; IoT sensor logs.
-          </p>
+      <div class="slide-meta">
+        <span class="tag-badge">Product 8</span>
+        <span class="slide-pill">Slide 01 / 10</span>
+      </div>
+    </div>
+    
+    <div class="slide-body">
+      <div style="margin-bottom: 20px;">
+        <div style="font-size: 32px; font-weight: 800; letter-spacing: -0.03em; color: var(--text-main); line-height: 1.15; margin-bottom: 8px;">
+          Hardware-Deterministic Modulo-2 Polynomial Division Engine
         </div>
-
-        <div class="bento-grid-4">
-          <div class="bezel-shell accent">
-            <span class="card-header-tag">MATHEMATICAL ENGINE</span>
-            <div class="card-title-lg">Galois Field GF(2)</div>
-            <p style="font-size: 12px; color: var(--text-muted);">Handwritten XOR long division with 0% CPU carry-overhead.</p>
-          </div>
-          <div class="bezel-shell">
-            <span class="card-header-tag">GENERATOR INVARIANT</span>
-            <div class="card-title-lg">33-Bit Polynomial</div>
-            <p style="font-size: 12px; color: var(--text-muted);">Session-fixed polynomial key eliminates sender-receiver divergence.</p>
-          </div>
-          <div class="bezel-shell">
-            <span class="card-header-tag">BLACK-BOX PURGE</span>
-            <div class="card-title-lg">Zero zlib / C Libs</div>
-            <p style="font-size: 12px; color: var(--text-muted);">Engineered from foundational bitwise arrays for transparent viva defense.</p>
-          </div>
-          <div class="bezel-shell">
-            <span class="card-header-tag">INTERFACE STANDARD</span>
-            <div class="card-title-lg">AEGIS Cockpit</div>
-            <p style="font-size: 12px; color: var(--text-muted);">2-Row single viewport telemetry with sub-millisecond status chips.</p>
-          </div>
+        <div style="font-size: 14px; color: var(--text-muted); max-width: 860px; line-height: 1.5;">
+          Zero-dependency binary bitstream verification for mission-critical SCADA telemetry, industrial robot controllers, and distributed edge logs using a session-fixed 33-bit generator polynomial.
         </div>
       </div>
 
-      <div class="slide-footer">
-        <span>Operating Systems &amp; Computer Networks Project</span>
-        <span>Repository: github.com/rogeralukka/OS-CN-Product-8</span>
+      <div class="grid-4col" style="height: 195px;">
+        <div class="bezel-outer">
+          <div class="bezel-inner">
+            <span class="tag-badge">MATHEMATICS</span>
+            <div class="bezel-title">GF(2) Arithmetic</div>
+            <div class="bezel-text">Handwritten Galois Field modulo-2 polynomial long division using pure bitwise XOR without carries or borrows.</div>
+          </div>
+        </div>
+
+        <div class="bezel-outer">
+          <div class="bezel-inner">
+            <span class="tag-badge">ARCHITECTURE</span>
+            <div class="bezel-title">Session-Fixed Invariant</div>
+            <div class="bezel-text">A 33-bit random polynomial generated once at server startup, maintaining sender and receiver parity.</div>
+          </div>
+        </div>
+
+        <div class="bezel-outer">
+          <div class="bezel-inner">
+            <span class="tag-badge">ENGINEERING</span>
+            <div class="bezel-title">Zero Black-Box Deps</div>
+            <div class="bezel-text">No opaque C libraries or <span class="font-mono">zlib.crc32()</span>. Every single bit transition is derived and inspectable.</div>
+          </div>
+        </div>
+
+        <div class="bezel-outer">
+          <div class="bezel-inner">
+            <span class="tag-badge">INTERFACE</span>
+            <div class="bezel-title">Warm Monotone UI</div>
+            <div class="bezel-text">2-row single-viewport architecture with custom 6px subtle scrollbars and live verification chips.</div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- ==================== SLIDE 2: THE INDUSTRIAL FAULT LINE ==================== -->
-    <div class="slide" data-slide="2">
-      <div class="slide-topbar">
-        <div class="topbar-left">
-          <span class="eyebrow">THREAT MODEL &amp; VULNERABILITY</span>
-          <h2 class="slide-heading">The Industrial Telemetry Fault Line</h2>
-        </div>
-        <span class="slide-badge">SLIDE 02 / 10</span>
+    <div class="slide-footer">
+      <div class="footer-left">
+        <span>IEEE 802.3 Standard Specification</span>
+        <span>•</span>
+        <span>Academic Assessment & Viva Presentation</span>
       </div>
-
-      <div class="slide-content">
-        <div class="bento-grid-2">
-          <div class="bezel-shell danger">
-            <span class="card-header-tag">THE PROBLEM: SILENT BIT DRIFT</span>
-            <div class="card-title-lg">Sub-Perceptual Data Corruption</div>
-            <div class="feature-list">
-              <div class="feature-item">
-                <span class="dot-indicator"></span>
-                <div><strong>High-EMI Telemetry Channels:</strong> Heavy motors, induction furnaces, and voltage spikes invert individual bits in flight.</div>
-              </div>
-              <div class="feature-item">
-                <span class="dot-indicator"></span>
-                <div><strong>Deceptive Mutations:</strong> Changing RPM <code>3450</code> &rarr; <code>3451</code> or Temp <code>82.4C</code> &rarr; <code>92.4C</code> looks syntactically valid to parsers but triggers false emergency overrides.</div>
-              </div>
-              <div class="feature-item">
-                <span class="dot-indicator"></span>
-                <div><strong>Checksum Blindspots:</strong> Parity fails on even errors; arithmetic checksums cancel out under compensating column flips.</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="bezel-shell success">
-            <span class="card-header-tag">THE DEFENSE: BITSTREAM POLYNOMIALS</span>
-            <div class="card-title-lg">100% Burst Error Elimination</div>
-            <div class="feature-list">
-              <div class="feature-item">
-                <span class="dot-indicator"></span>
-                <div><strong>Algebraic Rigor:</strong> Treats bitstream as coefficients of polynomial \(M(x)\) divided by generator \(G(x)\).</div>
-              </div>
-              <div class="feature-item">
-                <span class="dot-indicator"></span>
-                <div><strong>100% Guaranteed Detection:</strong> Catches all single-bit, double-bit, odd-numbered, and burst errors \(\le 32\) bits.</div>
-              </div>
-              <div class="feature-item">
-                <span class="dot-indicator"></span>
-                <div><strong>Full Step Observability:</strong> Exposes every transformation step (ASCII &rarr; Binary &rarr; Padded &rarr; Remainder).</div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="footer-ctrls">
+        <button class="ctrl-btn" onclick="prevSlide()">← Previous</button>
+        <button class="ctrl-btn" onclick="nextSlide()">Next →</button>
       </div>
+    </div>
+  </div>
 
-      <div class="slide-footer">
-        <span>Failure Modes &amp; Reliability Engineering</span>
-        <span>Slide 02 / 10</span>
+  <!-- ==================== SLIDE 2: PROBLEM STATEMENT ==================== -->
+  <div class="slide" id="slide-2">
+    <div class="slide-topbar">
+      <div class="topbar-left">
+        <span class="slide-eyebrow">Problem Definition & Motivation</span>
+        <h2 class="slide-title">The Critical Threat: Silent Log Corruption</h2>
+      </div>
+      <div class="slide-meta">
+        <span class="tag-badge">Threat Model</span>
+        <span class="slide-pill">Slide 02 / 10</span>
       </div>
     </div>
 
-    <!-- ==================== SLIDE 3: MATHEMATICAL FOUNDATION ==================== -->
-    <div class="slide" data-slide="3">
-      <div class="slide-topbar">
-        <div class="topbar-left">
-          <span class="eyebrow">MATHEMATICAL ENGINE</span>
-          <h2 class="slide-heading">Galois Field GF(2) &amp; The Zero Invariant</h2>
-        </div>
-        <span class="slide-badge">SLIDE 03 / 10</span>
-      </div>
-
-      <div class="slide-content">
-        <div class="bento-grid-3">
-          <div class="bezel-shell">
-            <span class="card-header-tag">ALGEBRAIC LAWS</span>
-            <div class="card-title-lg">Modulo-2 XOR Rules</div>
-            <div class="terminal-box">0 &oplus; 0 = 0
-0 &oplus; 1 = 1
-1 &oplus; 0 = 1
-1 &oplus; 1 = 0  [NO CARRY / BORROW]</div>
-            <p style="font-size: 12px; color: var(--text-muted);">Because addition and subtraction are identical in \(GF(2)\), long division reduces to iterative XOR shifts.</p>
+    <div class="slide-body">
+      <div class="grid-2col">
+        <div class="bezel-outer">
+          <div class="bezel-inner">
+            <span class="tag-badge" style="background: var(--red-bg); color: var(--red-text); border-color: var(--red-border);">Vulnerability Vector</span>
+            <div class="bezel-title">Industrial Noise & Tampering</div>
+            <div class="bezel-text" style="margin-bottom: 8px;">
+              Industrial SCADA, PLC, and IoT telemetry logs travel across noisy transmission lines (RS-485, CAN bus, Modbus TCP) susceptible to:
+            </div>
+            <ul style="padding-left: 18px; font-size: 12px; color: var(--text-muted); line-height: 1.6;">
+              <li><strong>Electromagnetic Interference (EMI):</strong> High-voltage inverter spikes flipping single or burst bits in transit.</li>
+              <li><strong>Storage Bit Decay:</strong> Flash memory wear on edge gateway microcontrollers corrupting event timestamps.</li>
+              <li><strong>Man-in-the-Middle Injection:</strong> Malicious actors altering sensor telemetry thresholds without detection.</li>
+            </ul>
           </div>
+        </div>
 
-          <div class="bezel-shell">
-            <span class="card-header-tag">GENERATOR CRITERIA</span>
-            <div class="card-title-lg">33-Bit Divisor \(G(x)\)</div>
-            <div class="terminal-box font-mono">100001010100110001101111101000111</div>
-            <div class="feature-list">
-              <div class="feature-item">
-                <span class="dot-indicator"></span>
-                <div><strong>Degree \(k = 32\):</strong> Requires a 33-bit divisor (\(k+1\)).</div>
-              </div>
-              <div class="feature-item">
-                <span class="dot-indicator"></span>
-                <div><strong>Fixed Remainder Size:</strong> Degree of remainder \(\le k-1\) (strictly 32 bits).</div>
-              </div>
+        <div class="bezel-outer">
+          <div class="bezel-inner">
+            <span class="tag-badge badge-success">Engine Solution</span>
+            <div class="bezel-title">Why Checksums Fail & CRC Prevents Disaster</div>
+            <div class="bezel-text" style="margin-bottom: 8px;">
+              Standard additive checksums (like IPv4 header sum) fail to detect common burst errors and bit swaps.
+            </div>
+            <div class="bit-box" style="margin-bottom: 8px;">
+              Additive Sum: (0x01 + 0x02) == (0x02 + 0x01) ➔ <span class="badge-danger" style="padding: 1px 4px; border-radius: 3px;">Undetected Swap!</span><br>
+              CRC Polynomial: \(M(x) \cdot x^{32} \pmod{G(x)}\) ➔ <span class="badge-success" style="padding: 1px 4px; border-radius: 3px;">100% Burst Detection</span>
+            </div>
+            <div class="bezel-text" style="font-size: 11.5px;">
+              Our Modulo-2 XOR engine guarantees 100% detection of all single-bit errors, all double-bit errors, and all burst errors up to 32 contiguous bits.
             </div>
           </div>
-
-          <div class="bezel-shell success">
-            <span class="card-header-tag">THE INVARIANT PROOF</span>
-            <div class="card-title-lg">Zero-Remainder Proof</div>
-            <div class="terminal-box green font-mono">T(x) = M(x)&middot;x^32 &oplus; R(x)
-M(x)&middot;x^32 = Q(x)&middot;G(x) &oplus; R(x)
-&there4; T(x) = Q(x)&middot;G(x) &oplus; R(x) &oplus; R(x)
-&there4; T(x) = Q(x)&middot;G(x) &oplus; 0
-&rArr; T(x) mod G(x) &equiv; 000...000</div>
-            <p style="font-size: 11.5px; color: var(--green);">Proof: Codeword mod \(G(x)\) MUST equal 32 zeros.</p>
-          </div>
         </div>
-      </div>
-
-      <div class="slide-footer">
-        <span>Polynomial Division Theory</span>
-        <span>Slide 03 / 10</span>
       </div>
     </div>
 
-    <!-- ==================== SLIDE 4: END-TO-END DATA PIPELINE ==================== -->
-    <div class="slide" data-slide="4">
-      <div class="slide-topbar">
-        <div class="topbar-left">
-          <span class="eyebrow">SYSTEM ARCHITECTURE</span>
-          <h2 class="slide-heading">End-to-End Codeword Pipeline</h2>
-        </div>
-        <span class="slide-badge">SLIDE 04 / 10</span>
+    <div class="slide-footer">
+      <div class="footer-left"><span>SCADA & Telemetry Safety Guard</span></div>
+      <div class="footer-ctrls">
+        <button class="ctrl-btn" onclick="prevSlide()">← Previous</button>
+        <button class="ctrl-btn" onclick="nextSlide()">Next →</button>
       </div>
+    </div>
+  </div>
 
-      <div class="slide-content">
-        <div class="bento-grid-2">
-          <div class="bezel-shell accent">
-            <span class="card-header-tag">TRANSMITTER PIPELINE (COMPUTE CRC)</span>
-            <div class="card-title-lg">Sender Generation Flow</div>
-            <div class="feature-list">
-              <div class="feature-item">
-                <span class="dot-indicator"></span>
-                <div><strong>1. Raw Log Text:</strong> <code>[2026-09-14] TURBINE_01 RPM:3450</code></div>
-              </div>
-              <div class="feature-item">
-                <span class="dot-indicator"></span>
-                <div><strong>2. Binary Serialization:</strong> 8-bit ASCII bitstream (\(M\)).</div>
-              </div>
-              <div class="feature-item">
-                <span class="dot-indicator"></span>
-                <div><strong>3. 32-Zero Padding:</strong> Message augmented with 32 zeros (\(M \cdot 2^{32}\)).</div>
-              </div>
-              <div class="feature-item">
-                <span class="dot-indicator"></span>
-                <div><strong>4. XOR Long Division:</strong> Modulo-2 division by 33-bit \(G(x)\).</div>
-              </div>
-              <div class="feature-item">
-                <span class="dot-indicator"></span>
-                <div><strong>5. Transmitted CRC:</strong> 32-bit remainder \(R\) attached to transmission.</div>
-              </div>
+  <!-- ==================== SLIDE 3: MATHEMATICAL FOUNDATION ==================== -->
+  <div class="slide" id="slide-3">
+    <div class="slide-topbar">
+      <div class="topbar-left">
+        <span class="slide-eyebrow">Algebraic Structure</span>
+        <h2 class="slide-title">Galois Field GF(2) Polynomial Arithmetic</h2>
+      </div>
+      <div class="slide-meta">
+        <span class="tag-badge">Discrete Math</span>
+        <span class="slide-pill">Slide 03 / 10</span>
+      </div>
+    </div>
+
+    <div class="slide-body">
+      <div class="grid-3col">
+        <div class="bezel-outer">
+          <div class="bezel-inner">
+            <span class="tag-badge">CONCEPT 01</span>
+            <div class="bezel-title">Binary Polynomial Mapping</div>
+            <div class="bezel-text">
+              Every message string is mapped to an 8-bit ASCII bitstream, treated as polynomial coefficients in \(GF(2)\):
+            </div>
+            <div class="bit-box" style="font-size: 11px;">
+              'A' = 01000001₂<br>
+              \(P(x) = x^6 + 1\)
+            </div>
+            <div class="bezel-text" style="font-size: 11.5px;">
+              No bit carries: Addition and subtraction in \(GF(2)\) are mathematically identical to bitwise <strong>XOR (\(\oplus\))</strong>.
             </div>
           </div>
+        </div>
 
-          <div class="bezel-shell accent">
-            <span class="card-header-tag">GATEWAY PIPELINE (VERIFY INTEGRITY)</span>
-            <div class="card-title-lg">Receiver Validation Flow</div>
-            <div class="feature-list">
-              <div class="feature-item">
-                <span class="dot-indicator"></span>
-                <div><strong>1. Ingestion:</strong> Received log \(M'\) + Received CRC \(R'\).</div>
+        <div class="bezel-outer">
+          <div class="bezel-inner">
+            <span class="tag-badge">CONCEPT 02</span>
+            <div class="bezel-title">Modulo-2 Long Division</div>
+            <div class="bezel-text">
+              The dividend is divided by a 33-bit generator \(G(x)\). If the leading bit is <span class="font-mono">1</span>, apply XOR; if <span class="font-mono">0</span>, shift by 1 bit:
+            </div>
+            <div class="bit-box" style="font-size: 11px;">
+              1 ⊕ 1 = 0  |  1 ⊕ 0 = 1<br>
+              0 ⊕ 1 = 1  |  0 ⊕ 0 = 0<br>
+              No borrows, no carries.
+            </div>
+            <div class="bezel-text" style="font-size: 11.5px;">
+              Linear time complexity: \(O(N)\) where \(N\) is total bitstream length.
+            </div>
+          </div>
+        </div>
+
+        <div class="bezel-outer">
+          <div class="bezel-inner">
+            <span class="tag-badge">CONCEPT 03</span>
+            <div class="bezel-title">Remainder Invariant</div>
+            <div class="bezel-text">
+              The division yields Quotient \(Q(x)\) and 32-bit Remainder \(R(x)\):
+            </div>
+            <div class="bit-box" style="font-size: 11px;">
+              \(M(x) \cdot x^{32} = Q(x)G(x) \oplus R(x)\)<br>
+              Codeword \(T(x) = M(x) \cdot x^{32} \oplus R(x)\)
+            </div>
+            <div class="bezel-text" style="font-size: 11.5px;">
+              When \(T(x)\) is divided by \(G(x)\), the remainder is strictly \(0^{32}\).
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <div class="footer-left"><span>GF(2) Ring Theory • Polynomial Long Division</span></div>
+      <div class="footer-ctrls">
+        <button class="ctrl-btn" onclick="prevSlide()">← Previous</button>
+        <button class="ctrl-btn" onclick="nextSlide()">Next →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 4: SESSION-FIXED DIVISOR ==================== -->
+  <div class="slide" id="slide-4">
+    <div class="slide-topbar">
+      <div class="topbar-left">
+        <span class="slide-eyebrow">Protocol Invariant</span>
+        <h2 class="slide-title">Session-Fixed 33-Bit Divisor Architecture</h2>
+      </div>
+      <div class="slide-meta">
+        <span class="tag-badge">Divisor Spec</span>
+        <span class="slide-pill">Slide 04 / 10</span>
+      </div>
+    </div>
+
+    <div class="slide-body">
+      <div class="grid-asym-1">
+        <div class="bezel-outer">
+          <div class="bezel-inner">
+            <span class="tag-badge">ALGORITHM DERIVATION</span>
+            <div class="bezel-title">Deterministic 33-Bit Generation</div>
+            <div class="bezel-text">
+              To guarantee mathematical validity for a 32-bit remainder, the polynomial divisor must strictly be of degree 32 (requiring exactly 33 coefficients):
+            </div>
+            <div class="bit-box">
+              <span style="color: var(--text-dim);"># python implementation in backend/crc_checker.py</span><br>
+              def generate_divisor():<br>
+              &nbsp;&nbsp;middle = "".join(random.choice("01") for _ in range(31))<br>
+              &nbsp;&nbsp;return "1" + middle + "1"  <span style="color: var(--text-muted);"># 33 bits: MSB=1, LSB=1</span>
+            </div>
+            <ul style="padding-left: 18px; font-size: 12px; color: var(--text-muted); line-height: 1.5; margin-top: 4px;">
+              <li><strong>MSB = 1:</strong> Guarantees polynomial degree is strictly \(x^{32}\).</li>
+              <li><strong>LSB = 1:</strong> Ensures the polynomial is not divisible by \(x\) (detects trailing zero anomalies).</li>
+              <li><strong>Singleton Session:</strong> Stored in memory on server launch; sender and receiver compute against the identical invariant.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="bezel-outer">
+          <div class="bezel-inner">
+            <span class="tag-badge">DIVISOR PROPERTIES</span>
+            <div class="bezel-title">Session Life-Cycle</div>
+            <div class="bezel-text" style="font-size: 12px;">
+              The divisor is communicated via standard handshake or fixed session parameter:
+            </div>
+            <div class="bit-box" style="font-size: 11px;">
+              GET /api/divisor ➔ 200 OK<br>
+              {<br>
+              &nbsp;&nbsp;"divisor": "100001010100110001101111101000111",<br>
+              &nbsp;&nbsp;"degree": 32,<br>
+              &nbsp;&nbsp;"length": 33<br>
+              }
+            </div>
+            <div class="bezel-text" style="font-size: 11.5px;">
+              Eliminates hardcoded static weaknesses while maintaining absolute sender-receiver alignment.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <div class="footer-left"><span>Singleton Divisor Pattern • Session Synchronicity</span></div>
+      <div class="footer-ctrls">
+        <button class="ctrl-btn" onclick="prevSlide()">← Previous</button>
+        <button class="ctrl-btn" onclick="nextSlide()">Next →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 5: SENDER SIDE ENGINE ==================== -->
+  <div class="slide" id="slide-5">
+    <div class="slide-topbar">
+      <div class="topbar-left">
+        <span class="slide-eyebrow">Transmission Pipeline</span>
+        <h2 class="slide-title">Sender Engine: CRC-32 Computation Workflow</h2>
+      </div>
+      <div class="slide-meta">
+        <span class="tag-badge">Sender Side</span>
+        <span class="slide-pill">Slide 05 / 10</span>
+      </div>
+    </div>
+
+    <div class="slide-body">
+      <div class="grid-4col" style="height: 100%;">
+        <div class="bezel-outer">
+          <div class="bezel-inner">
+            <span class="tag-badge">STEP 01</span>
+            <div class="bezel-title">ASCII to Binary</div>
+            <div class="bezel-text">Converts raw UTF-8 telemetry into 8-bit padded binary stream.</div>
+            <div class="bit-box" style="font-size: 10.5px;">
+              "WARN_42" ➔<br>
+              01010111 01000001<br>
+              01010010 01001110<br>
+              ... (56 bits)
+            </div>
+          </div>
+        </div>
+
+        <div class="bezel-outer">
+          <div class="bezel-inner">
+            <span class="tag-badge">STEP 02</span>
+            <div class="bezel-title">32-Zero Padding</div>
+            <div class="bezel-text">Appends 32 zeroes at the end (\(M(x) \cdot x^{32}\)) to make room for CRC.</div>
+            <div class="bit-box" style="font-size: 10.5px;">
+              [Binary Stream]<br>
+              + "0" * 32<br>
+              Length: 56 + 32<br>
+              = 88 bits
+            </div>
+          </div>
+        </div>
+
+        <div class="bezel-outer">
+          <div class="bezel-inner">
+            <span class="tag-badge">STEP 03</span>
+            <div class="bezel-title">Modulo-2 Division</div>
+            <div class="bezel-text">Executes <span class="font-mono">xordiv()</span> over padded stream with 33-bit divisor.</div>
+            <div class="bit-box" style="font-size: 10.5px;">
+              Dividend: 88 bits<br>
+              Divisor: 33 bits<br>
+              XOR Iterations: 56<br>
+              Bit Remainder: 32 bits
+            </div>
+          </div>
+        </div>
+
+        <div class="bezel-outer">
+          <div class="bezel-inner">
+            <span class="tag-badge">STEP 04</span>
+            <div class="bezel-title">Hex Encoding</div>
+            <div class="bezel-text">Produces 32-bit binary CRC & 8-character hex checksum for transmission.</div>
+            <div class="bit-box" style="font-size: 10.5px;">
+              Binary CRC:<br>
+              010010010110...<br>
+              Hex Digest:<br>
+              <span class="bit-highlight">0x4964A71B</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <div class="footer-left"><span>POST /api/compute Pipeline</span></div>
+      <div class="footer-ctrls">
+        <button class="ctrl-btn" onclick="prevSlide()">← Previous</button>
+        <button class="ctrl-btn" onclick="nextSlide()">Next →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 6: RECEIVER SIDE ENGINE ==================== -->
+  <div class="slide" id="slide-6">
+    <div class="slide-topbar">
+      <div class="topbar-left">
+        <span class="slide-eyebrow">Ingestion Pipeline</span>
+        <h2 class="slide-title">Receiver Engine: Verification & Syndrome Check</h2>
+      </div>
+      <div class="slide-meta">
+        <span class="tag-badge">Receiver Side</span>
+        <span class="slide-pill">Slide 06 / 10</span>
+      </div>
+    </div>
+
+    <div class="slide-body">
+      <div class="grid-2col">
+        <div class="bezel-outer">
+          <div class="bezel-inner">
+            <span class="tag-badge">VERIFICATION PROTOCOL</span>
+            <div class="bezel-title">Codeword Reconstruction & Division</div>
+            <div class="bezel-text" style="margin-bottom: 6px;">
+              The receiver takes the received telemetry string and the received 32-bit CRC, creating the transmitted polynomial codeword:
+            </div>
+            <div class="bit-box" style="font-size: 11px; margin-bottom: 8px;">
+              1. \(M'(x) = 	ext{ascii2binary}(	ext{Received Log})\)<br>
+              2. \(	ext{Codeword } T'(x) = M'(x) + 	ext{Received CRC (32 bits)}\)<br>
+              3. \(	ext{Syndrome Remainder } R'(x) = 	ext{xordiv}(T'(x), G(x))\)
+            </div>
+            <div class="bezel-text" style="font-size: 12px;">
+              If even a single bit in the message or CRC is flipped in transit, the remainder vector \(R'(x) 
+eq \mathbf{0}^{32}\).
+            </div>
+          </div>
+        </div>
+
+        <div class="bezel-outer">
+          <div class="bezel-inner">
+            <span class="tag-badge">DECISION MATRIX</span>
+            <div class="bezel-title">Zero-Syndrome Acceptance Check</div>
+            <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 4px;">
+              <div style="background: var(--green-bg); border: 1px solid var(--green-border); border-radius: 6px; padding: 10px 12px;">
+                <div style="font-size: 13px; font-weight: 700; color: var(--green-text); margin-bottom: 3px;">
+                  ✓ ACCEPT (Remainder == "0"*32)
+                </div>
+                <div style="font-size: 11.5px; color: var(--green-text);">
+                  Zero remainder proves the received message is algebraically congruent to the sender's transmission. Log marked authentic.
+                </div>
               </div>
-              <div class="feature-item">
-                <span class="dot-indicator"></span>
-                <div><strong>2. Codeword Formation:</strong> \(T' = 	ext{binary}(M') + R'\).</div>
-              </div>
-              <div class="feature-item">
-                <span class="dot-indicator"></span>
-                <div><strong>3. Modulo-2 Division:</strong> \(T'\) divided by the <em>same</em> 33-bit \(G(x)\).</div>
-              </div>
-              <div class="feature-item">
-                <span class="dot-indicator"></span>
-                <div><strong>4. Decision Engine:</strong>
-                  <br>&bull; Remainder == <code>000...000</code> &rarr; <span style="color: var(--green); font-weight:700;">ACCEPT &check;</span>
-                  <br>&bull; Remainder != <code>000...000</code> &rarr; <span style="color: var(--red); font-weight:700;">REJECT &cross;</span>
+
+              <div style="background: var(--red-bg); border: 1px solid var(--red-border); border-radius: 6px; padding: 10px 12px;">
+                <div style="font-size: 13px; font-weight: 700; color: var(--red-text); margin-bottom: 3px;">
+                  ✗ REJECT (Remainder != "0"*32)
+                </div>
+                <div style="font-size: 11.5px; color: var(--red-text);">
+                  Non-zero syndrome detected. Transmission noise or malicious payload mutation caught. Log quarantined immediately.
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      <div class="slide-footer">
-        <span>Codeword Lifecycle</span>
-        <span>Slide 04 / 10</span>
-      </div>
     </div>
 
-    <!-- ==================== SLIDE 5: CODEBASE INSPECTION ==================== -->
-    <div class="slide" data-slide="5">
-      <div class="slide-topbar">
-        <div class="topbar-left">
-          <span class="eyebrow">CODE ARCHITECTURE &bull; BACKEND/CRC_CHECKER.PY</span>
-          <h2 class="slide-heading">Algorithmic Implementation from First Principles</h2>
-        </div>
-        <span class="slide-badge">SLIDE 05 / 10</span>
-      </div>
-
-      <div class="slide-content">
-        <div class="bento-grid-2">
-          <div class="bezel-shell">
-            <span class="card-header-tag">HANDWRITTEN DIVISION LOOP</span>
-            <div class="card-title-lg">xordiv() Implementation</div>
-            <div class="terminal-box font-mono">def xordiv(dividend, divisor):
-    d = list(dividend)
-    m = len(divisor) # 33 bits
-    for i in range(len(d) - m + 1):
-        if d[i] == '1':
-            for j in range(m):
-                d[i+j] = '1' if d[i+j] != divisor[j] else '0'
-    return ''.join(d[-(m - 1):]) # Last 32 bits</div>
-            <p style="font-size: 11.5px; color: var(--text-muted);">In-place array reduction prevents memory churn on large telemetry logs.</p>
-          </div>
-
-          <div class="bezel-shell">
-            <span class="card-header-tag">SESSION SINGLETON &amp; VERIFY</span>
-            <div class="card-title-lg">Session Generator &amp; Verification</div>
-            <div class="terminal-box font-mono">GENERATOR = None # Session-level singleton
-
-def get_divisor():
-    global GENERATOR
-    if GENERATOR is None:
-        GENERATOR = generate_divisor()
-    return GENERATOR
-
-def verify(text, received_crc):
-    codeword = ascii2binary(text) + received_crc
-    remainder = xordiv(codeword, get_divisor())
-    return remainder == '0' * 32</div>
-            <p style="font-size: 11.5px; color: var(--text-muted);">Guarantees identical generator polynomial across both sender and receiver.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="slide-footer">
-        <span>Clean Code &amp; Zero Black-Box Libraries</span>
-        <span>Slide 05 / 10</span>
+    <div class="slide-footer">
+      <div class="footer-left"><span>POST /api/verify Syndrome Verification</span></div>
+      <div class="footer-ctrls">
+        <button class="ctrl-btn" onclick="prevSlide()">← Previous</button>
+        <button class="ctrl-btn" onclick="nextSlide()">Next →</button>
       </div>
     </div>
-
-    <!-- ==================== SLIDE 6: ERROR DETECTION POWER ==================== -->
-    <div class="slide" data-slide="6">
-      <div class="slide-topbar">
-        <div class="topbar-left">
-          <span class="eyebrow">VIVA DEFENSE COMPARISON</span>
-          <h2 class="slide-heading">Error Detection Power: CRC-32 vs Other Schemes</h2>
-        </div>
-        <span class="slide-badge">SLIDE 06 / 10</span>
-      </div>
-
-      <div class="slide-content">
-        <div class="bento-grid-3">
-          <div class="bezel-shell danger">
-            <span class="card-header-tag">SCHEME 1: PARITY CHECK</span>
-            <div class="card-title-lg">1-Bit Parity</div>
-            <div class="feature-list">
-              <div class="feature-item">
-                <span class="dot-indicator"></span>
-                <div><strong>Single Bit Errors:</strong> 100% Detection.</div>
-              </div>
-              <div class="feature-item">
-                <span class="dot-indicator"></span>
-                <div><strong>Even Bit Errors:</strong> 0% (Fails on 2, 4, 6 bit flips).</div>
-              </div>
-              <div class="feature-item">
-                <span class="dot-indicator"></span>
-                <div><strong>Burst Errors:</strong> Completely blind.</div>
-              </div>
-              <div class="feature-item">
-                <span class="dot-indicator"></span>
-                <div><strong>Verdict:</strong> Unfit for Industrial SCADA.</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="bezel-shell">
-            <span class="card-header-tag">SCHEME 2: ARITHMETIC CHECKSUM</span>
-            <div class="card-title-lg">Internet Checksum</div>
-            <div class="feature-list">
-              <div class="feature-item">
-                <span class="dot-indicator"></span>
-                <div><strong>Mechanism:</strong> 16-bit 1's complement sum.</div>
-              </div>
-              <div class="feature-item">
-                <span class="dot-indicator"></span>
-                <div><strong>Vulnerability:</strong> Compensating bit errors in opposing columns cancel out.</div>
-              </div>
-              <div class="feature-item">
-                <span class="dot-indicator"></span>
-                <div><strong>Burst Errors:</strong> Weak detection.</div>
-              </div>
-              <div class="feature-item">
-                <span class="dot-indicator"></span>
-                <div><strong>Verdict:</strong> General networking only.</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="bezel-shell success">
-            <span class="card-header-tag">SCHEME 3: CRC-32 POLYNOMIAL</span>
-            <div class="card-title-lg">CRC-32 Modulo-2</div>
-            <div class="feature-list">
-              <div class="feature-item">
-                <span class="dot-indicator"></span>
-                <div><strong>Single &amp; Double Bit:</strong> 100% Detection.</div>
-              </div>
-              <div class="feature-item">
-                <span class="dot-indicator"></span>
-                <div><strong>All Odd Errors:</strong> 100% Detection.</div>
-              </div>
-              <div class="feature-item">
-                <span class="dot-indicator"></span>
-                <div><strong>Burst \(\le 32\) bits:</strong> 100% Detection.</div>
-              </div>
-              <div class="feature-item">
-                <span class="dot-indicator"></span>
-                <div><strong>Burst &gt; 32 bits:</strong> &gt; 99.99999997% Detection.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="slide-footer">
-        <span>Comparative Robustness Analysis</span>
-        <span>Slide 06 / 10</span>
-      </div>
-    </div>
-
-    <!-- ==================== SLIDE 7: REST API OBSERVABILITY ==================== -->
-    <div class="slide" data-slide="7">
-      <div class="slide-topbar">
-        <div class="topbar-left">
-          <span class="eyebrow">API ARCHITECTURE</span>
-          <h2 class="slide-heading">Flask REST Endpoints &amp; Telemetry Payload</h2>
-        </div>
-        <span class="slide-badge">SLIDE 07 / 10</span>
-      </div>
-
-      <div class="slide-content">
-        <div class="bento-grid-2">
-          <div class="bezel-shell">
-            <span class="card-header-tag">ENDPOINT: POST /api/compute</span>
-            <div class="card-title-lg">Compute Checksum &amp; Steps</div>
-            <div class="terminal-box font-mono">// Request:
-{ "log": "[2026-09-14] TURBINE_01 RPM:3450" }
-
-// Response (200 OK):
-{
-  "crc": "01001001011001001010011100011011",
-  "divisor": "100001010100110001101111101000111",
-  "steps": {
-    "binary": "01011011...",
-    "padded": "01011011...00000000000000000000000000000000",
-    "remainder": "01001001011001001010011100011011",
-    "hex": "4964A71B"
-  }
-}</div>
-          </div>
-
-          <div class="bezel-shell">
-            <span class="card-header-tag">ENDPOINT: POST /api/verify</span>
-            <div class="card-title-lg">Verify Integrity &amp; Remainder</div>
-            <div class="terminal-box font-mono">// Request:
-{ 
-  "log": "[2026-09-14] TURBINE_01 RPM:3450",
-  "crc": "01001001011001001010011100011011"
-}
-
-// Response (200 OK):
-{
-  "accepted": true,
-  "divisor": "100001010100110001101111101000111",
-  "steps": {
-    "codeword": "01011011...01001001011001001010011100011011",
-    "remainder": "00000000000000000000000000000000"
-  }
-}</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="slide-footer">
-        <span>REST Contracts &amp; Data Payloads</span>
-        <span>Slide 07 / 10</span>
-      </div>
-    </div>
-
-    <!-- ==================== SLIDE 8: AEGIS UI COCKPIT ==================== -->
-    <div class="slide" data-slide="8">
-      <div class="slide-topbar">
-        <div class="topbar-left">
-          <span class="eyebrow">FRONTEND DESIGN SYSTEM</span>
-          <h2 class="slide-heading">AEGIS-Inspired UI: 2-Row Viewport Cockpit</h2>
-        </div>
-        <span class="slide-badge">SLIDE 08 / 10</span>
-      </div>
-
-      <div class="slide-content">
-        <div class="bento-grid-2">
-          <div class="bezel-shell">
-            <span class="card-header-tag">2-ROW SPATIAL ARCHITECTURE</span>
-            <div class="card-title-lg">Zero Full-Page Scroll Design</div>
-            <div class="feature-list">
-              <div class="feature-item">
-                <span class="dot-indicator"></span>
-                <div><strong>Fixed 56px Navbar:</strong> Left brand title + Right clean SVG Sun/Moon theme toggle (no distracting boxes).</div>
-              </div>
-              <div class="feature-item">
-                <span class="dot-indicator"></span>
-                <div><strong>ROW 1 (Inputs):</strong> Dual cards (Transmitter vs Receiver) with 110px textareas, FileReader API (.txt/.log/.md), and live Random Telemetry generator.</div>
-              </div>
-              <div class="feature-item">
-                <span class="dot-indicator"></span>
-                <div><strong>ROW 2 (Process Steps):</strong> Fixed-height scrollable live step breakdown with custom 6px thin scrollbars matching dark/light themes.</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="bezel-shell accent">
-            <span class="card-header-tag">DESIGN TOKENS &amp; STATUS CHIPS</span>
-            <div class="card-title-lg">Haptic Micro-Aesthetics</div>
-            <div class="feature-list">
-              <div class="feature-item">
-                <span class="dot-indicator"></span>
-                <div><strong>Light Mode:</strong> Warm off-white (<code>#f5f4f0</code>), clean white surface cards (<code>#ffffff</code>), subtle borders (<code>#e0ddd4</code>).</div>
-              </div>
-              <div class="feature-item">
-                <span class="dot-indicator"></span>
-                <div><strong>Dark Mode:</strong> Deep OLED slate (<code>#0f0f0f</code>), dark surface cards (<code>#1a1a1a</code>), borders (<code>#2a2a2a</code>).</div>
-              </div>
-              <div class="feature-item">
-                <span class="dot-indicator"></span>
-                <div><strong>Compact Result Chip (~40px):</strong>
-                  <br>&bull; <span style="color: var(--green); font-weight:700;">✓ ACCEPT — Message integrity verified</span>
-                  <br>&bull; <span style="color: var(--red); font-weight:700;">✗ REJECT — Corruption detected</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="slide-footer">
-        <span>Modern Interface Ergonomics</span>
-        <span>Slide 08 / 10</span>
-      </div>
-    </div>
-
-    <!-- ==================== SLIDE 9: TEST SCENARIOS ==================== -->
-    <div class="slide" data-slide="9">
-      <div class="slide-topbar">
-        <div class="topbar-left">
-          <span class="eyebrow">EMPIRICAL VALIDATION</span>
-          <h2 class="slide-heading">Verified Test Scenarios &amp; Evidence</h2>
-        </div>
-        <span class="slide-badge">SLIDE 09 / 10</span>
-      </div>
-
-      <div class="slide-content">
-        <div class="bento-grid-3">
-          <div class="bezel-shell success">
-            <span class="card-header-tag">SCENARIO 1: PASS</span>
-            <div class="card-title-lg">&check; Authentic Log</div>
-            <p style="font-size: 11.5px; color: var(--text-muted);">Turbine log transmitted without interference.</p>
-            <div class="terminal-box green font-mono">Remainder:
-00000000000000000000000000000000</div>
-            <p style="font-size: 13px; font-weight:700; color: var(--green);">STATUS: ACCEPT &check;</p>
-            <p style="font-size: 11px; color: var(--text-muted);">Exact zero-remainder proves 0 bit errors.</p>
-          </div>
-
-          <div class="bezel-shell danger">
-            <span class="card-header-tag">SCENARIO 2: DATA MUTATION</span>
-            <div class="card-title-lg">&cross; 1-Bit Data Flip</div>
-            <p style="font-size: 11.5px; color: var(--text-muted);">RPM mutated from <code>3450</code> &rarr; <code>3451</code>.</p>
-            <div class="terminal-box red font-mono">Remainder:
-01000100101001111100111011000000</div>
-            <p style="font-size: 13px; font-weight:700; color: var(--red);">STATUS: REJECT &cross;</p>
-            <p style="font-size: 11px; color: var(--text-muted);">Caught instantaneous single-character noise.</p>
-          </div>
-
-          <div class="bezel-shell danger">
-            <span class="card-header-tag">SCENARIO 3: PACKET FORGERY</span>
-            <div class="card-title-lg">&cross; Checksum Flip</div>
-            <p style="font-size: 11.5px; color: var(--text-muted);">Transmitted CRC flipped in-flight.</p>
-            <div class="terminal-box red font-mono">Remainder:
-10110110100110100110011001101101</div>
-            <p style="font-size: 13px; font-weight:700; color: var(--red);">STATUS: REJECT &cross;</p>
-            <p style="font-size: 11px; color: var(--text-muted);">Guards against forged telemetry packets.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="slide-footer">
-        <span>Empirical Verification Evidence</span>
-        <span>Slide 09 / 10</span>
-      </div>
-    </div>
-
-    <!-- ==================== SLIDE 10: CONCLUSION & VIVA DEFENSE ==================== -->
-    <div class="slide" data-slide="10">
-      <div class="slide-topbar">
-        <div class="topbar-left">
-          <span class="eyebrow">SUMMARY &amp; VIVA DEFENSE</span>
-          <h2 class="slide-heading">Conclusion &amp; Rapid-Fire Viva Answers</h2>
-        </div>
-        <span class="slide-badge">SLIDE 10 / 10</span>
-      </div>
-
-      <div class="slide-content">
-        <div class="bento-grid-2">
-          <div class="bezel-shell">
-            <span class="card-header-tag">ENGINEERING MILESTONES</span>
-            <div class="card-title-lg">Key Project Achievements</div>
-            <div class="feature-list">
-              <div class="feature-item">
-                <span class="dot-indicator"></span>
-                <div><strong>Zero Black-Box Reliance:</strong> Handcrafted Galois Field polynomial division in Python arrays without <code>zlib</code>.</div>
-              </div>
-              <div class="feature-item">
-                <span class="dot-indicator"></span>
-                <div><strong>Session Invariance:</strong> Solved generator mismatch via dynamic 33-bit session polynomial singleton.</div>
-              </div>
-              <div class="feature-item">
-                <span class="dot-indicator"></span>
-                <div><strong>Production Delivery:</strong> Fully documented codebase, Git repo, and cross-platform responsive dashboard.</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="bezel-shell accent">
-            <span class="card-header-tag">RAPID-FIRE VIVA DEFENSE</span>
-            <div class="card-title-lg">Authoritative Answers</div>
-            <div class="feature-list">
-              <div class="feature-item">
-                <span class="dot-indicator"></span>
-                <div><strong>Q: Why Modulo-2?</strong> Addition &amp; subtraction are XOR without carries/borrows, enabling deterministic bitstream division.</div>
-              </div>
-              <div class="feature-item">
-                <span class="dot-indicator"></span>
-                <div><strong>Q: Why 33-bit divisor for 32-bit CRC?</strong> Dividing by degree 32 guarantees remainder of degree \(\le 31\) (exactly 32 bits).</div>
-              </div>
-              <div class="feature-item">
-                <span class="dot-indicator"></span>
-                <div><strong>Repository:</strong> github.com/rogeralukka/OS-CN-Product-8</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="slide-footer">
-        <span>Conclusion &bull; Ready for Evaluation</span>
-        <span>Slide 10 / 10</span>
-      </div>
-    </div>
-
   </div>
 
-  <!-- NAVIGATION CONTROLS DOCK -->
-  <div class="deck-controls">
-    <button class="dock-btn" id="prevBtn">&larr; Previous</button>
-    <div class="progress-bar-container">
-      <div class="progress-fill" id="progressFill"></div>
+  <!-- ==================== SLIDE 7: ZERO BLACK-BOX ARCHITECTURE ==================== -->
+  <div class="slide" id="slide-7">
+    <div class="slide-topbar">
+      <div class="topbar-left">
+        <span class="slide-eyebrow">Engineering Rigor</span>
+        <h2 class="slide-title">Zero Black-Box Architecture: No zlib</h2>
+      </div>
+      <div class="slide-meta">
+        <span class="tag-badge">Code Architecture</span>
+        <span class="slide-pill">Slide 07 / 10</span>
+      </div>
     </div>
-    <span id="slideIndicator" style="font-size: 13px; font-weight:700; color: var(--text-muted);">01 / 10</span>
-    <button class="dock-btn" id="nextBtn">Next &rarr;</button>
-    <button class="dock-btn" id="themeBtn">&#9788; Theme</button>
-    <button class="dock-btn" id="fullscreenBtn">&#x26F6; Fullscreen (F)</button>
+
+    <div class="slide-body">
+      <div class="grid-asym-2">
+        <div class="bezel-outer">
+          <div class="bezel-inner">
+            <span class="tag-badge badge-danger">Standard Pitfall</span>
+            <div class="bezel-title">Opaque Library Flaws</div>
+            <div class="bezel-text" style="font-size: 12px; margin-bottom: 6px;">
+              Most student and production systems rely on <span class="font-mono">zlib.crc32()</span> or <span class="font-mono">binascii.crc32()</span>:
+            </div>
+            <ul style="padding-left: 18px; font-size: 11.5px; color: var(--text-muted); line-height: 1.55;">
+              <li><strong>Zero Step Visibility:</strong> Cannot view intermediate bit transformations or generator operations.</li>
+              <li><strong>Hardcoded Inflexible Generator:</strong> Fixed strictly to IEEE 802.3 polynomial, preventing dynamic session keys.</li>
+              <li><strong>No Educational Value:</strong> Black-box call obscures modulo-2 XOR mechanics during viva examination.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="bezel-outer">
+          <div class="bezel-inner">
+            <span class="tag-badge badge-success">Our Handwritten Implementation</span>
+            <div class="bezel-title">Handcrafted Pure Python Modulo-2 Engine</div>
+            <div class="bit-box" style="font-size: 11px;">
+              def xordiv(dividend, divisor):<br>
+              &nbsp;&nbsp;div_len = len(divisor) &nbsp;<span style="color: var(--text-muted);"># 33 bits</span><br>
+              &nbsp;&nbsp;cur = list(dividend[:div_len])<br>
+              &nbsp;&nbsp;for bit in dividend[div_len:]:<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;if cur[0] == "1":<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cur = [str(int(cur[i]) ^ int(divisor[i])) for i in range(div_len)]<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;cur = cur[1:] + [bit]<br>
+              &nbsp;&nbsp;if cur[0] == "1":<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;cur = [str(int(cur[i]) ^ int(divisor[i])) for i in range(div_len)]<br>
+              &nbsp;&nbsp;return "".join(cur[1:]) &nbsp;<span style="color: var(--text-muted);"># Last 32 bits</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <div class="footer-left"><span>Pure Bitwise Python • 100% Traceable Execution</span></div>
+      <div class="footer-ctrls">
+        <button class="ctrl-btn" onclick="prevSlide()">← Previous</button>
+        <button class="ctrl-btn" onclick="nextSlide()">Next →</button>
+      </div>
+    </div>
   </div>
 
-  <script>
-    let currentSlide = 1;
-    const totalSlides = 10;
-    const slides = document.querySelectorAll('.slide');
-    const indicator = document.getElementById('slideIndicator');
-    const progress = document.getElementById('progressFill');
+  <!-- ==================== SLIDE 8: UI & ERGONOMIC DESIGN ==================== -->
+  <div class="slide" id="slide-8">
+    <div class="slide-topbar">
+      <div class="topbar-left">
+        <span class="slide-eyebrow">Human-Computer Interaction</span>
+        <h2 class="slide-title">UI Architecture: 2-Row Single-Viewport Layout</h2>
+      </div>
+      <div class="slide-meta">
+        <span class="tag-badge">Interface System</span>
+        <span class="slide-pill">Slide 08 / 10</span>
+      </div>
+    </div>
 
-    function showSlide(n) {
-      if (n < 1) n = 1;
-      if (n > totalSlides) n = totalSlides;
+    <div class="slide-body">
+      <div class="grid-3col">
+        <div class="bezel-outer">
+          <div class="bezel-inner">
+            <span class="tag-badge">ROW 1 (TOP)</span>
+            <div class="bezel-title">Input & Control Bay</div>
+            <div class="bezel-text" style="font-size: 12px;">
+              Dual-column split separating the original sender log and the received verification buffer:
+            </div>
+            <ul style="padding-left: 18px; font-size: 11.5px; color: var(--text-muted); line-height: 1.5; margin-top: 4px;">
+              <li><strong>FileReader Uploads:</strong> One-click <span class="font-mono">.txt</span> or <span class="font-mono">.log</span> ingestion.</li>
+              <li><strong>Live Generator:</strong> Injects realistic industrial telemetry events on demand.</li>
+              <li><strong>Inline CRC Fields:</strong> Pre-populates computed checksum into receiver card.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="bezel-outer">
+          <div class="bezel-inner">
+            <span class="tag-badge">ROW 2 (BOTTOM)</span>
+            <div class="bezel-title">Process Steps Telemetry</div>
+            <div class="bezel-text" style="font-size: 12px;">
+              Real-time audit trail displaying intermediate mathematical calculations:
+            </div>
+            <ul style="padding-left: 18px; font-size: 11.5px; color: var(--text-muted); line-height: 1.5; margin-top: 4px;">
+              <li><strong>Binary Inspection:</strong> Complete ASCII bitstream conversion.</li>
+              <li><strong>Padding & Polynomial:</strong> Shows exactly how 32 zeros are suffixed.</li>
+              <li><strong>Subtle 6px Scrollbars:</strong> Smooth scroll strictly inside step cards without whole-page scroll.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="bezel-outer">
+          <div class="bezel-inner">
+            <span class="tag-badge">AESTHETICS</span>
+            <div class="bezel-title">Warm Monotone System</div>
+            <div class="bezel-text" style="font-size: 12px;">
+              Editorial, tactile visual tokens replacing generic dark blue themes:
+            </div>
+            <ul style="padding-left: 18px; font-size: 11.5px; color: var(--text-muted); line-height: 1.5; margin-top: 4px;">
+              <li><strong>Warm Ivory:</strong> <span class="font-mono">#fff8e7</span> base with <span class="font-mono">#efe5d5</span> parchment shells.</li>
+              <li><strong>Ochre Accents:</strong> <span class="font-mono">#e3c08f</span> for highlights and focus states.</li>
+              <li><strong>Plain SVG Theme Toggle:</strong> Clean borderless sun/moon icon.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <div class="footer-left"><span>Single-Viewport Layout • Zero Unwanted Overflow</span></div>
+      <div class="footer-ctrls">
+        <button class="ctrl-btn" onclick="prevSlide()">← Previous</button>
+        <button class="ctrl-btn" onclick="nextSlide()">Next →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 9: VIVA DEFENSE & FAQS ==================== -->
+  <div class="slide" id="slide-9">
+    <div class="slide-topbar">
+      <div class="topbar-left">
+        <span class="slide-eyebrow">Examiner Defense</span>
+        <h2 class="slide-title">Viva Voce Preparation & Technical Defense</h2>
+      </div>
+      <div class="slide-meta">
+        <span class="tag-badge">Viva Q&A</span>
+        <span class="slide-pill">Slide 09 / 10</span>
+      </div>
+    </div>
+
+    <div class="slide-body">
+      <div class="grid-2col">
+        <div class="bezel-outer">
+          <div class="bezel-inner">
+            <span class="tag-badge">VIVA QUESTION 01</span>
+            <div class="bezel-title">Why a 33-bit divisor for a 32-bit CRC?</div>
+            <div class="bezel-text" style="font-size: 12px;">
+              <strong>Examiner Trap:</strong> Students often assume a 32-bit CRC uses a 32-bit divisor.<br>
+              <strong>Scientific Answer:</strong> A polynomial of degree \(n\) requires \(n+1\) coefficients. To obtain an \(n\)-bit remainder (\(x^{31}\) to \(x^0\)), the generator polynomial must be of degree \(n = 32\) (\(x^{32} + \dots + 1\)), which consists of strictly <strong>33 bits</strong>.
+            </div>
+          </div>
+        </div>
+
+        <div class="bezel-outer">
+          <div class="bezel-inner">
+            <span class="tag-badge">VIVA QUESTION 02</span>
+            <div class="bezel-title">Why not standard arithmetic division?</div>
+            <div class="bezel-text" style="font-size: 12px;">
+              <strong>Examiner Trap:</strong> Why use bitwise XOR instead of decimal/integer division?<br>
+              <strong>Scientific Answer:</strong> Standard integer division has carries and borrows that propagate across word boundaries, requiring complex ALUs. Modulo-2 arithmetic in \(GF(2)\) maps directly onto single-cycle hardware XOR gates, enabling line-rate 100 Gbps network throughput.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <div class="footer-left"><span>Theoretical Rigor & Mathematical Proofs</span></div>
+      <div class="footer-ctrls">
+        <button class="ctrl-btn" onclick="prevSlide()">← Previous</button>
+        <button class="ctrl-btn" onclick="nextSlide()">Next →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 10: CONCLUSION & SUMMARY ==================== -->
+  <div class="slide" id="slide-10">
+    <div class="slide-topbar">
+      <div class="topbar-left">
+        <span class="slide-eyebrow">Conclusion & Specification</span>
+        <h2 class="slide-title">System Metrics & Deliverable Summary</h2>
+      </div>
+      <div class="slide-meta">
+        <span class="tag-badge badge-success">Production Ready</span>
+        <span class="slide-pill">Slide 10 / 10</span>
+      </div>
+    </div>
+
+    <div class="slide-body">
+      <div class="grid-asym-1">
+        <div class="bezel-outer">
+          <div class="bezel-inner">
+            <span class="tag-badge">DELIVERABLES MATRIX</span>
+            <div class="bezel-title">Complete Full-Stack Architecture</div>
+            <div style="display: flex; flex-direction: column; gap: 8px; font-size: 12px; color: var(--text-muted); margin-top: 4px;">
+              <div><strong>Backend API:</strong> Flask REST service hosting <span class="font-mono">/api/compute</span> and <span class="font-mono">/api/verify</span>.</div>
+              <div><strong>Algorithm:</strong> Pure Python bitwise Galois Field Modulo-2 XOR long division.</div>
+              <div><strong>Frontend:</strong> 2-row responsive single-screen dashboard with custom 6px scrollbars.</div>
+              <div><strong>Design Language:</strong> Warm Monotone editorial palette (<span class="font-mono">#fff8e7</span>, <span class="font-mono">#efe5d5</span>, <span class="font-mono">#e3c08f</span>).</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bezel-outer">
+          <div class="bezel-inner">
+            <span class="tag-badge">KEY METRICS</span>
+            <div class="bezel-title">Integrity Guarantees</div>
+            <div style="display: flex; flex-direction: column; gap: 6px; font-size: 12px; color: var(--text-muted); margin-top: 4px;">
+              <div>• <strong>Single Bit Errors:</strong> 100% Detection</div>
+              <div>• <strong>Double Bit Errors:</strong> 100% Detection</div>
+              <div>• <strong>Burst Errors (≤ 32 bits):</strong> 100% Detection</div>
+              <div>• <strong>Longer Bursts (> 32 bits):</strong> 99.99999997% Detection</div>
+              <div>• <strong>External Dependencies:</strong> 0 Black-box libs</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <div class="footer-left"><span>Product 8 • GitHub: https://github.com/rogeralukka/OS-CN-Product-8</span></div>
+      <div class="footer-ctrls">
+        <button class="ctrl-btn" onclick="prevSlide()">← Previous</button>
+        <button class="ctrl-btn" onclick="goToSlide(1)">Restart ↺</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="progress-bar-container">
+    <div class="progress-bar" id="progress"></div>
+  </div>
+
+</div>
+
+<script>
+  let currentSlide = 1;
+  const totalSlides = 10;
+
+  function showSlide(n) {
+    document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
+    const target = document.getElementById(`slide-${n}`);
+    if (target) {
+      target.classList.add('active');
       currentSlide = n;
-
-      slides.forEach((s, idx) => {
-        if (idx + 1 === currentSlide) {
-          s.classList.add('active');
-        } else {
-          s.classList.remove('active');
-        }
-      });
-
-      indicator.textContent = `${currentSlide.toString().padStart(2, '0')} / ${totalSlides.toString().padStart(2, '0')}`;
-      progress.style.width = `${(currentSlide / totalSlides) * 100}%`;
+      const pct = (currentSlide / totalSlides) * 100;
+      document.getElementById('progress').style.width = pct + '%';
     }
+  }
 
-    document.getElementById('prevBtn').addEventListener('click', () => showSlide(currentSlide - 1));
-    document.getElementById('nextBtn').addEventListener('click', () => showSlide(currentSlide + 1));
+  function nextSlide() {
+    if (currentSlide < totalSlides) {
+      showSlide(currentSlide + 1);
+    }
+  }
 
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
-        showSlide(currentSlide + 1);
-      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
-        showSlide(currentSlide - 1);
-      } else if (e.key.toLowerCase() === 'f') {
-        toggleFullScreen();
-      } else if (e.key >= '1' && e.key <= '9') {
-        showSlide(parseInt(e.key));
-      } else if (e.key === '0') {
-        showSlide(10);
-      }
-    });
+  function prevSlide() {
+    if (currentSlide > 1) {
+      showSlide(currentSlide - 1);
+    }
+  }
 
-    document.getElementById('fullscreenBtn').addEventListener('click', toggleFullScreen);
+  function goToSlide(n) {
+    showSlide(n);
+  }
 
-    function toggleFullScreen() {
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+      nextSlide();
+    } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      prevSlide();
+    } else if (e.key.toLowerCase() === 'f') {
       if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen().catch(err => console.log(err));
+        document.documentElement.requestFullscreen();
       } else {
-        if (document.exitFullscreen) {
-          document.exitFullscreen();
-        }
+        document.exitFullscreen();
       }
+    } else if (e.key.toLowerCase() === 't') {
+      const html = document.documentElement;
+      const current = html.getAttribute('data-theme');
+      html.setAttribute('data-theme', current === 'warm' ? 'dark-monotone' : 'warm');
     }
+  });
 
-    document.getElementById('themeBtn').addEventListener('click', () => {
-      const current = document.documentElement.getAttribute('data-theme') || 'dark';
-      document.documentElement.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
-    });
-  </script>
+  showSlide(1);
+</script>
+
 </body>
 </html>

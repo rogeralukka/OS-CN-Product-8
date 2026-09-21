@@ -1,10 +1,16 @@
+# Python
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
-.env
+*.py[cod]
+*$py.class
+*.env
 .venv/
 env/
-venv/
+
+# Office temporary lock files
+~$*.pptx
+~$*.docx
+~$*.xlsx
+
+# OS files
 .DS_Store
 Thumbs.db

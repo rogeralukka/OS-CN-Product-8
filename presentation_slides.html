@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Industrial Machine Log Integrity Checker — Executive Monotone Deck</title>
+  <title>Industrial Machine Log Integrity Checker — CRC Demonstration Deck</title>
   <!-- Google Fonts: Plus Jakarta Sans (UI/Headings) & JetBrains Mono (Math/Code) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       /* Warm Monotone Editorial Palette */
@@ -42,7 +42,6 @@
       --red-border: #e6b4ad;
       
       --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-      --font-serif: 'Playfair Display', Georgia, serif;
       --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
     }
 
@@ -123,7 +122,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      padding: 34px 42px;
+      padding: 30px 40px;
       display: none;
       flex-direction: column;
       justify-content: space-between;
@@ -144,25 +143,25 @@
       justify-content: space-between;
       align-items: flex-end;
       border-bottom: 1px solid var(--border-outer);
-      padding-bottom: 12px;
+      padding-bottom: 10px;
     }
 
     .topbar-left {
       display: flex;
       flex-direction: column;
-      gap: 3px;
+      gap: 2px;
     }
 
     .slide-eyebrow {
       font-size: 10px;
       font-weight: 700;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--text-muted);
     }
 
     .slide-title {
-      font-size: 23px;
+      font-size: 21px;
       font-weight: 700;
       color: var(--text-main);
       letter-spacing: -0.02em;
@@ -189,7 +188,7 @@
     /* Slide Content Body */
     .slide-body {
       flex: 1;
-      padding: 20px 0;
+      padding: 16px 0;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -201,7 +200,7 @@
       background: var(--surface-subtle);
       border: 1px solid var(--border-outer);
       border-radius: 10px;
-      padding: 5px;
+      padding: 4px;
       display: flex;
       flex-direction: column;
       height: 100%;
@@ -211,16 +210,16 @@
       background: var(--surface-core);
       border: 1px solid var(--border-inner);
       border-radius: 6px;
-      padding: 16px 18px;
+      padding: 14px 16px;
       height: 100%;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 6px;
       position: relative;
     }
 
     .bezel-title {
-      font-size: 14px;
+      font-size: 13.5px;
       font-weight: 700;
       color: var(--text-main);
       letter-spacing: -0.01em;
@@ -230,45 +229,63 @@
     }
 
     .bezel-text {
-      font-size: 12.5px;
+      font-size: 11.5px;
       color: var(--text-muted);
-      line-height: 1.5;
+      line-height: 1.45;
     }
 
     /* Bento Grid Variations */
     .grid-2col {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 16px;
+      gap: 14px;
       height: 100%;
     }
 
     .grid-3col {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
+      gap: 12px;
       height: 100%;
     }
 
     .grid-4col {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
+      gap: 10px;
       height: 100%;
     }
 
-    .grid-asym-1 {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 16px;
-      height: 100%;
+    /* Guidelines Table Styling */
+    .guide-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11.5px;
+      background: var(--surface-core);
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--border-outer);
     }
 
-    .grid-asym-2 {
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 16px;
-      height: 100%;
+    .guide-table th {
+      background: var(--surface-accent);
+      color: var(--text-main);
+      text-align: left;
+      padding: 8px 12px;
+      font-weight: 700;
+      border-bottom: 1px solid var(--border-outer);
+    }
+
+    .guide-table td {
+      padding: 8px 12px;
+      border-bottom: 1px solid var(--border-inner);
+      color: var(--text-muted);
+      vertical-align: top;
+      line-height: 1.4;
+    }
+
+    .guide-table tr:nth-child(even) td {
+      background: var(--surface-subtle);
     }
 
     /* Monospace Code / Bitstream Box */
@@ -278,19 +295,10 @@
       border-radius: 5px;
       padding: 8px 10px;
       font-family: var(--font-mono);
-      font-size: 11.5px;
+      font-size: 11px;
       color: var(--text-main);
-      line-height: 1.45;
+      line-height: 1.4;
       overflow-x: auto;
-    }
-
-    .bit-highlight {
-      background: var(--surface-accent);
-      color: var(--text-main);
-      font-weight: 700;
-      padding: 1px 4px;
-      border-radius: 3px;
-      border: 1px solid var(--ochre-accent);
     }
 
     .tag-badge {
@@ -303,6 +311,7 @@
       background: var(--accent-badge-bg);
       color: var(--accent-badge-text);
       border: 1px solid var(--accent-badge-border);
+      width: fit-content;
     }
 
     .badge-success {
@@ -323,15 +332,15 @@
       justify-content: space-between;
       align-items: center;
       border-top: 1px solid var(--border-outer);
-      padding-top: 12px;
+      padding-top: 10px;
     }
 
     .footer-left {
-      font-size: 11px;
+      font-size: 10.5px;
       color: var(--text-dim);
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
     }
 
     .footer-ctrls {
@@ -394,7 +403,7 @@
         opacity: 1 !important;
         page-break-after: always !important;
         height: 100vh !important;
-        padding: 30px !important;
+        padding: 24px !important;
       }
       .footer-ctrls, .progress-bar-container {
         display: none !important;
@@ -406,70 +415,60 @@
 
 <div class="slide-deck" id="deck">
 
-  <!-- ==================== SLIDE 1: COVER & HERO ==================== -->
+  <!-- ==================== SLIDE 1: PROBLEM STATEMENT & GROUP DETAILS ==================== -->
   <div class="slide active" id="slide-1">
     <div class="slide-topbar">
       <div class="topbar-left">
-        <span class="slide-eyebrow">SRU CSE • Operating Systems & Computer Networks</span>
+        <span class="slide-eyebrow">SR University • Dept of CSE • OS & CN Lab (Product 8)</span>
         <h1 class="slide-title">Industrial Machine Log Integrity Checker</h1>
       </div>
       <div class="slide-meta">
-        <span class="tag-badge">Product 8</span>
+        <span class="tag-badge">Group VIII</span>
         <span class="slide-pill">Slide 01 / 10</span>
       </div>
     </div>
     
     <div class="slide-body">
-      <div style="margin-bottom: 20px;">
-        <div style="font-size: 32px; font-weight: 800; letter-spacing: -0.03em; color: var(--text-main); line-height: 1.15; margin-bottom: 8px;">
-          Hardware-Deterministic Modulo-2 Polynomial Division Engine
-        </div>
-        <div style="font-size: 14px; color: var(--text-muted); max-width: 860px; line-height: 1.5;">
-          Zero-dependency binary bitstream verification for mission-critical SCADA telemetry, industrial robot controllers, and distributed edge logs using a session-fixed 33-bit generator polynomial.
+      <div style="margin-bottom: 12px;">
+        <div style="font-size: 20px; font-weight: 800; color: var(--text-main); margin-bottom: 2px;">
+          Hardware-Deterministic Modulo-2 Polynomial Division & Telemetry Error Detection Engine
         </div>
       </div>
 
-      <div class="grid-4col" style="height: 195px;">
+      <div class="grid-2col" style="height: 420px;">
         <div class="bezel-outer">
           <div class="bezel-inner">
-            <span class="tag-badge">MATHEMATICS</span>
-            <div class="bezel-title">GF(2) Arithmetic</div>
-            <div class="bezel-text">Handwritten Galois Field modulo-2 polynomial long division using pure bitwise XOR without carries or borrows.</div>
+            <span class="tag-badge">PROBLEM STATEMENT</span>
+            <div class="bezel-title">Silent Telemetry Corruption & Noise</div>
+            <div class="bezel-text" style="font-size: 11.5px; line-height: 1.5;">
+              • <strong>Context:</strong> Industrial telemetry logs sent across RS-485 / CAN / Modbus are vulnerable to electromagnetic interference (EMI) and bit decay.<br>
+              • <strong>Impact:</strong> Flipping a single bit alters sensor data (e.g. <code>TEMP:82.4C</code> ➔ <code>TEMP:92.4C</code>), causing false emergency shutdowns or missed faults.<br>
+              • <strong>Solution:</strong> A pure handwritten Modulo-2 CRC-32 engine with a session-fixed 33-bit divisor providing 100% burst error detection up to 32 bits.
+            </div>
+            <div class="bit-box" style="margin-top: auto; font-size: 10px;">
+              Repo: https://github.com/rogeralukka/OS-CN-Product-8
+            </div>
           </div>
         </div>
 
         <div class="bezel-outer">
           <div class="bezel-inner">
-            <span class="tag-badge">ARCHITECTURE</span>
-            <div class="bezel-title">Session-Fixed Invariant</div>
-            <div class="bezel-text">A 33-bit random polynomial generated once at server startup, maintaining sender and receiver parity.</div>
-          </div>
-        </div>
-
-        <div class="bezel-outer">
-          <div class="bezel-inner">
-            <span class="tag-badge">ENGINEERING</span>
-            <div class="bezel-title">Zero Black-Box Deps</div>
-            <div class="bezel-text">No opaque C libraries or <span class="font-mono">zlib.crc32()</span>. Every single bit transition is derived and inspectable.</div>
-          </div>
-        </div>
-
-        <div class="bezel-outer">
-          <div class="bezel-inner">
-            <span class="tag-badge">INTERFACE</span>
-            <div class="bezel-title">Warm Monotone UI</div>
-            <div class="bezel-text">2-row single-viewport architecture with custom 6px subtle scrollbars and live verification chips.</div>
+            <span class="tag-badge" style="background: var(--surface-accent); color: #45341c; border-color: var(--ochre-accent);">TEAM MEMBER RESPONSIBILITIES (GUIDELINE SECTION 10)</span>
+            <div class="bezel-title">Group VIII Demonstration Roles</div>
+            <div class="bezel-text" style="font-size: 11px; line-height: 1.45;">
+              <strong>1. ROGER A RAJU (Lead / Architecture):</strong> Problem statement, product overview, software workflow & dataset management (Slides 1 & 2).<br>
+              <strong>2. K. ROHIT GOUD (Algorithms Lead):</strong> GF(2) Galois field mathematics, Modulo-2 XOR logic & CRC-32 division (Slides 3 & 4).<br>
+              <strong>3. G. SIDDHARTHA (Data Ingestion Lead):</strong> ASCII-to-binary mapping, file input parsing (.log/.txt) & dashboard integration (Slides 4 & 5).<br>
+              <strong>4. P. HARSHAVARDHAN (Backend & Telemetry):</strong> Flask REST API (/api/compute, /api/verify), session divisor & live step telemetry (Slides 5 & 6).<br>
+              <strong>5. G. REVANTH (QA & Verification Lead):</strong> Test cases (TC-01..TC-05), error simulation, challenges & summary (Slides 7 & 8).
+            </div>
           </div>
         </div>
       </div>
     </div>
 
     <div class="slide-footer">
-      <div class="footer-left">
-        <span>IEEE 802.3 Standard Specification</span>
-        <span>•</span>
-        <span>Academic Assessment & Viva Presentation</span>
-      </div>
+      <div class="footer-left"><span>Product 8 • Group VIII • Demonstration Deck</span></div>
       <div class="footer-ctrls">
         <button class="ctrl-btn" onclick="prevSlide()">← Previous</button>
         <button class="ctrl-btn" onclick="nextSlide()">Next →</button>
@@ -477,57 +476,54 @@
     </div>
   </div>
 
-  <!-- ==================== SLIDE 2: PROBLEM STATEMENT ==================== -->
+  <!-- ==================== SLIDE 2: INTRODUCTION TO PRODUCT ==================== -->
   <div class="slide" id="slide-2">
     <div class="slide-topbar">
       <div class="topbar-left">
-        <span class="slide-eyebrow">Problem Definition & Motivation</span>
-        <h2 class="slide-title">The Critical Threat: Silent Log Corruption</h2>
+        <span class="slide-eyebrow">Slide 2 • Recommended PPT Structure</span>
+        <h2 class="slide-title">Introduction to the Product & Software Workflow</h2>
       </div>
       <div class="slide-meta">
-        <span class="tag-badge">Threat Model</span>
+        <span class="tag-badge">Product Summary</span>
         <span class="slide-pill">Slide 02 / 10</span>
       </div>
     </div>
 
     <div class="slide-body">
-      <div class="grid-2col">
-        <div class="bezel-outer">
-          <div class="bezel-inner">
-            <span class="tag-badge" style="background: var(--red-bg); color: var(--red-text); border-color: var(--red-border);">Vulnerability Vector</span>
-            <div class="bezel-title">Industrial Noise & Tampering</div>
-            <div class="bezel-text" style="margin-bottom: 8px;">
-              Industrial SCADA, PLC, and IoT telemetry logs travel across noisy transmission lines (RS-485, CAN bus, Modbus TCP) susceptible to:
-            </div>
-            <ul style="padding-left: 18px; font-size: 12px; color: var(--text-muted); line-height: 1.6;">
-              <li><strong>Electromagnetic Interference (EMI):</strong> High-voltage inverter spikes flipping single or burst bits in transit.</li>
-              <li><strong>Storage Bit Decay:</strong> Flash memory wear on edge gateway microcontrollers corrupting event timestamps.</li>
-              <li><strong>Man-in-the-Middle Injection:</strong> Malicious actors altering sensor telemetry thresholds without detection.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="bezel-outer">
-          <div class="bezel-inner">
-            <span class="tag-badge badge-success">Engine Solution</span>
-            <div class="bezel-title">Why Checksums Fail & CRC Prevents Disaster</div>
-            <div class="bezel-text" style="margin-bottom: 8px;">
-              Standard additive checksums (like IPv4 header sum) fail to detect common burst errors and bit swaps.
-            </div>
-            <div class="bit-box" style="margin-bottom: 8px;">
-              Additive Sum: (0x01 + 0x02) == (0x02 + 0x01) ➔ <span class="badge-danger" style="padding: 1px 4px; border-radius: 3px;">Undetected Swap!</span><br>
-              CRC Polynomial: \(M(x) \cdot x^{32} \pmod{G(x)}\) ➔ <span class="badge-success" style="padding: 1px 4px; border-radius: 3px;">100% Burst Detection</span>
-            </div>
-            <div class="bezel-text" style="font-size: 11.5px;">
-              Our Modulo-2 XOR engine guarantees 100% detection of all single-bit errors, all double-bit errors, and all burst errors up to 32 contiguous bits.
-            </div>
-          </div>
-        </div>
-      </div>
+      <table class="guide-table">
+        <thead>
+          <tr>
+            <th style="width: 22%;">Area</th>
+            <th>What is Implemented in Product 8</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Problem Requirement</strong></td>
+            <td>Detects bit-level telemetry mutations, transmission noise, and log tampering in real-time industrial SCADA systems. CRC is required because additive checksums fail on bit swaps and burst noise.</td>
+          </tr>
+          <tr>
+            <td><strong>Implementation Plan</strong></td>
+            <td>1. User Input (Text/File) ➔ 2. ASCII-to-Binary Conversion ➔ 3. Append 32 Zeros ➔ 4. Handwritten Modulo-2 Division (<code>xordiv</code>) ➔ 5. 32-bit CRC Generated ➔ 6. Codeword Re-division at Receiver ➔ 7. Syndrome Zero Check.</td>
+          </tr>
+          <tr>
+            <td><strong>Software & Stack Used</strong></td>
+            <td>Backend: Python 3, Flask REST API, Flask-CORS. Frontend: Vanilla HTML5, CSS3 (Warm Monotone Single-Viewport), JavaScript Fetch API. Tools: VS Code, Git, Chrome.</td>
+          </tr>
+          <tr>
+            <td><strong>Input / Test Data</strong></td>
+            <td>Supports direct binary streams, raw log text messages, and full industrial <code>.log</code> / <code>.txt</code> files (10 pre-built demo reports provided in Downloads).</td>
+          </tr>
+          <tr>
+            <td><strong>Final Output</strong></td>
+            <td>Calculated 32-bit CRC, Hex digest (<code>0x4964A71B</code>), complete bitwise step-by-step audit trail, and instant binary ACCEPT (0³²) or REJECT chip.</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
     <div class="slide-footer">
-      <div class="footer-left"><span>SCADA & Telemetry Safety Guard</span></div>
+      <div class="footer-left"><span>Product Specifications • Implementation Workflow</span></div>
       <div class="footer-ctrls">
         <button class="ctrl-btn" onclick="prevSlide()">← Previous</button>
         <button class="ctrl-btn" onclick="nextSlide()">Next →</button>
@@ -535,12 +531,12 @@
     </div>
   </div>
 
-  <!-- ==================== SLIDE 3: MATHEMATICAL FOUNDATION ==================== -->
+  <!-- ==================== SLIDE 3: OPERATING PRINCIPLE OF CRC ==================== -->
   <div class="slide" id="slide-3">
     <div class="slide-topbar">
       <div class="topbar-left">
-        <span class="slide-eyebrow">Algebraic Structure</span>
-        <h2 class="slide-title">Galois Field GF(2) Polynomial Arithmetic</h2>
+        <span class="slide-eyebrow">Slide 3 • Mathematical Foundations</span>
+        <h2 class="slide-title">Operating Principle of CRC: Modulo-2 Division</h2>
       </div>
       <div class="slide-meta">
         <span class="tag-badge">Discrete Math</span>
@@ -552,52 +548,39 @@
       <div class="grid-3col">
         <div class="bezel-outer">
           <div class="bezel-inner">
-            <span class="tag-badge">CONCEPT 01</span>
-            <div class="bezel-title">Binary Polynomial Mapping</div>
+            <span class="tag-badge">1. POLYNOMIAL MAPPING</span>
+            <div class="bezel-title">Galois Field GF(2)</div>
             <div class="bezel-text">
-              Every message string is mapped to an 8-bit ASCII bitstream, treated as polynomial coefficients in \(GF(2)\):
-            </div>
-            <div class="bit-box" style="font-size: 11px;">
-              'A' = 01000001₂<br>
-              \(P(x) = x^6 + 1\)
-            </div>
-            <div class="bezel-text" style="font-size: 11.5px;">
-              No bit carries: Addition and subtraction in \(GF(2)\) are mathematically identical to bitwise <strong>XOR (\(\oplus\))</strong>.
+              • Bitstream is treated as polynomial coefficients over GF(2).<br>
+              • Example: 'A' = 01000001₂ ➔ \(P(x) = x^6 + 1\).<br>
+              • <strong>Arithmetic Rule:</strong> Addition and subtraction are identical to bitwise XOR (⊕).<br>
+              • <strong>No Carries/Borrows:</strong> Enables line-rate single-cycle hardware execution.
             </div>
           </div>
         </div>
 
         <div class="bezel-outer">
           <div class="bezel-inner">
-            <span class="tag-badge">CONCEPT 02</span>
-            <div class="bezel-title">Modulo-2 Long Division</div>
+            <span class="tag-badge">2. DIVISION & PADDING</span>
+            <div class="bezel-title">32-Zero Appending</div>
             <div class="bezel-text">
-              The dividend is divided by a 33-bit generator \(G(x)\). If the leading bit is <span class="font-mono">1</span>, apply XOR; if <span class="font-mono">0</span>, shift by 1 bit:
-            </div>
-            <div class="bit-box" style="font-size: 11px;">
-              1 ⊕ 1 = 0  |  1 ⊕ 0 = 1<br>
-              0 ⊕ 1 = 1  |  0 ⊕ 0 = 0<br>
-              No borrows, no carries.
-            </div>
-            <div class="bezel-text" style="font-size: 11.5px;">
-              Linear time complexity: \(O(N)\) where \(N\) is total bitstream length.
+              • Sender appends 32 zeros: \(M(x) \cdot x^{32}\).<br>
+              • Long division performed with 33-bit Generator \(G(x)\).<br>
+              • If leading bit is 1, XOR with divisor; if 0, shift 1 bit right.<br>
+              • \(M(x) \cdot x^{32} = Q(x)G(x) \oplus R(x)\). Remainder \(R(x)\) is the 32-bit CRC.
             </div>
           </div>
         </div>
 
         <div class="bezel-outer">
           <div class="bezel-inner">
-            <span class="tag-badge">CONCEPT 03</span>
-            <div class="bezel-title">Remainder Invariant</div>
+            <span class="tag-badge">3. SYNDROME PROOF</span>
+            <div class="bezel-title">Receiver Zero Remainder</div>
             <div class="bezel-text">
-              The division yields Quotient \(Q(x)\) and 32-bit Remainder \(R(x)\):
-            </div>
-            <div class="bit-box" style="font-size: 11px;">
-              \(M(x) \cdot x^{32} = Q(x)G(x) \oplus R(x)\)<br>
-              Codeword \(T(x) = M(x) \cdot x^{32} \oplus R(x)\)
-            </div>
-            <div class="bezel-text" style="font-size: 11.5px;">
-              When \(T(x)\) is divided by \(G(x)\), the remainder is strictly \(0^{32}\).
+              • Codeword Transmitted: \(T(x) = M(x) \cdot x^{32} \oplus R(x)\).<br>
+              • \(T(x) = Q(x)G(x) \oplus R(x) \oplus R(x) = Q(x)G(x)\).<br>
+              • Receiver calculates: \(T'(x) \pmod{G(x)} = R'(x)\).<br>
+              • <strong>Decision Rule:</strong> If \(R'(x) == 0^{32}\) ➔ ACCEPT (No Error); else REJECT.
             </div>
           </div>
         </div>
@@ -605,7 +588,7 @@
     </div>
 
     <div class="slide-footer">
-      <div class="footer-left"><span>GF(2) Ring Theory • Polynomial Long Division</span></div>
+      <div class="footer-left"><span>GF(2) Ring Theory • Algebraic Syndrome Invariant</span></div>
       <div class="footer-ctrls">
         <button class="ctrl-btn" onclick="prevSlide()">← Previous</button>
         <button class="ctrl-btn" onclick="nextSlide()">Next →</button>
@@ -613,166 +596,16 @@
     </div>
   </div>
 
-  <!-- ==================== SLIDE 4: SESSION-FIXED DIVISOR ==================== -->
+  <!-- ==================== SLIDE 4: PYTHON IMPLEMENTATION ==================== -->
   <div class="slide" id="slide-4">
     <div class="slide-topbar">
       <div class="topbar-left">
-        <span class="slide-eyebrow">Protocol Invariant</span>
-        <h2 class="slide-title">Session-Fixed 33-Bit Divisor Architecture</h2>
+        <span class="slide-eyebrow">Slide 4 • Python Implementation</span>
+        <h2 class="slide-title">Python Implementation of CRC (crc_checker.py)</h2>
       </div>
       <div class="slide-meta">
-        <span class="tag-badge">Divisor Spec</span>
+        <span class="tag-badge">Source Code</span>
         <span class="slide-pill">Slide 04 / 10</span>
-      </div>
-    </div>
-
-    <div class="slide-body">
-      <div class="grid-asym-1">
-        <div class="bezel-outer">
-          <div class="bezel-inner">
-            <span class="tag-badge">ALGORITHM DERIVATION</span>
-            <div class="bezel-title">Deterministic 33-Bit Generation</div>
-            <div class="bezel-text">
-              To guarantee mathematical validity for a 32-bit remainder, the polynomial divisor must strictly be of degree 32 (requiring exactly 33 coefficients):
-            </div>
-            <div class="bit-box">
-              <span style="color: var(--text-dim);"># python implementation in backend/crc_checker.py</span><br>
-              def generate_divisor():<br>
-              &nbsp;&nbsp;middle = "".join(random.choice("01") for _ in range(31))<br>
-              &nbsp;&nbsp;return "1" + middle + "1"  <span style="color: var(--text-muted);"># 33 bits: MSB=1, LSB=1</span>
-            </div>
-            <ul style="padding-left: 18px; font-size: 12px; color: var(--text-muted); line-height: 1.5; margin-top: 4px;">
-              <li><strong>MSB = 1:</strong> Guarantees polynomial degree is strictly \(x^{32}\).</li>
-              <li><strong>LSB = 1:</strong> Ensures the polynomial is not divisible by \(x\) (detects trailing zero anomalies).</li>
-              <li><strong>Singleton Session:</strong> Stored in memory on server launch; sender and receiver compute against the identical invariant.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="bezel-outer">
-          <div class="bezel-inner">
-            <span class="tag-badge">DIVISOR PROPERTIES</span>
-            <div class="bezel-title">Session Life-Cycle</div>
-            <div class="bezel-text" style="font-size: 12px;">
-              The divisor is communicated via standard handshake or fixed session parameter:
-            </div>
-            <div class="bit-box" style="font-size: 11px;">
-              GET /api/divisor ➔ 200 OK<br>
-              {<br>
-              &nbsp;&nbsp;"divisor": "100001010100110001101111101000111",<br>
-              &nbsp;&nbsp;"degree": 32,<br>
-              &nbsp;&nbsp;"length": 33<br>
-              }
-            </div>
-            <div class="bezel-text" style="font-size: 11.5px;">
-              Eliminates hardcoded static weaknesses while maintaining absolute sender-receiver alignment.
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="slide-footer">
-      <div class="footer-left"><span>Singleton Divisor Pattern • Session Synchronicity</span></div>
-      <div class="footer-ctrls">
-        <button class="ctrl-btn" onclick="prevSlide()">← Previous</button>
-        <button class="ctrl-btn" onclick="nextSlide()">Next →</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ==================== SLIDE 5: SENDER SIDE ENGINE ==================== -->
-  <div class="slide" id="slide-5">
-    <div class="slide-topbar">
-      <div class="topbar-left">
-        <span class="slide-eyebrow">Transmission Pipeline</span>
-        <h2 class="slide-title">Sender Engine: CRC-32 Computation Workflow</h2>
-      </div>
-      <div class="slide-meta">
-        <span class="tag-badge">Sender Side</span>
-        <span class="slide-pill">Slide 05 / 10</span>
-      </div>
-    </div>
-
-    <div class="slide-body">
-      <div class="grid-4col" style="height: 100%;">
-        <div class="bezel-outer">
-          <div class="bezel-inner">
-            <span class="tag-badge">STEP 01</span>
-            <div class="bezel-title">ASCII to Binary</div>
-            <div class="bezel-text">Converts raw UTF-8 telemetry into 8-bit padded binary stream.</div>
-            <div class="bit-box" style="font-size: 10.5px;">
-              "WARN_42" ➔<br>
-              01010111 01000001<br>
-              01010010 01001110<br>
-              ... (56 bits)
-            </div>
-          </div>
-        </div>
-
-        <div class="bezel-outer">
-          <div class="bezel-inner">
-            <span class="tag-badge">STEP 02</span>
-            <div class="bezel-title">32-Zero Padding</div>
-            <div class="bezel-text">Appends 32 zeroes at the end (\(M(x) \cdot x^{32}\)) to make room for CRC.</div>
-            <div class="bit-box" style="font-size: 10.5px;">
-              [Binary Stream]<br>
-              + "0" * 32<br>
-              Length: 56 + 32<br>
-              = 88 bits
-            </div>
-          </div>
-        </div>
-
-        <div class="bezel-outer">
-          <div class="bezel-inner">
-            <span class="tag-badge">STEP 03</span>
-            <div class="bezel-title">Modulo-2 Division</div>
-            <div class="bezel-text">Executes <span class="font-mono">xordiv()</span> over padded stream with 33-bit divisor.</div>
-            <div class="bit-box" style="font-size: 10.5px;">
-              Dividend: 88 bits<br>
-              Divisor: 33 bits<br>
-              XOR Iterations: 56<br>
-              Bit Remainder: 32 bits
-            </div>
-          </div>
-        </div>
-
-        <div class="bezel-outer">
-          <div class="bezel-inner">
-            <span class="tag-badge">STEP 04</span>
-            <div class="bezel-title">Hex Encoding</div>
-            <div class="bezel-text">Produces 32-bit binary CRC & 8-character hex checksum for transmission.</div>
-            <div class="bit-box" style="font-size: 10.5px;">
-              Binary CRC:<br>
-              010010010110...<br>
-              Hex Digest:<br>
-              <span class="bit-highlight">0x4964A71B</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="slide-footer">
-      <div class="footer-left"><span>POST /api/compute Pipeline</span></div>
-      <div class="footer-ctrls">
-        <button class="ctrl-btn" onclick="prevSlide()">← Previous</button>
-        <button class="ctrl-btn" onclick="nextSlide()">Next →</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ==================== SLIDE 6: RECEIVER SIDE ENGINE ==================== -->
-  <div class="slide" id="slide-6">
-    <div class="slide-topbar">
-      <div class="topbar-left">
-        <span class="slide-eyebrow">Ingestion Pipeline</span>
-        <h2 class="slide-title">Receiver Engine: Verification & Syndrome Check</h2>
-      </div>
-      <div class="slide-meta">
-        <span class="tag-badge">Receiver Side</span>
-        <span class="slide-pill">Slide 06 / 10</span>
       </div>
     </div>
 
@@ -780,44 +613,57 @@
       <div class="grid-2col">
         <div class="bezel-outer">
           <div class="bezel-inner">
-            <span class="tag-badge">VERIFICATION PROTOCOL</span>
-            <div class="bezel-title">Codeword Reconstruction & Division</div>
-            <div class="bezel-text" style="margin-bottom: 6px;">
-              The receiver takes the received telemetry string and the received 32-bit CRC, creating the transmitted polynomial codeword:
-            </div>
-            <div class="bit-box" style="font-size: 11px; margin-bottom: 8px;">
-              1. \(M'(x) = 	ext{ascii2binary}(	ext{Received Log})\)<br>
-              2. \(	ext{Codeword } T'(x) = M'(x) + 	ext{Received CRC (32 bits)}\)<br>
-              3. \(	ext{Syndrome Remainder } R'(x) = 	ext{xordiv}(T'(x), G(x))\)
-            </div>
-            <div class="bezel-text" style="font-size: 12px;">
-              If even a single bit in the message or CRC is flipped in transit, the remainder vector \(R'(x) 
-eq \mathbf{0}^{32}\).
+            <span class="tag-badge">HANDWRITTEN PYTHON LOGIC</span>
+            <div class="bezel-title">Core Functions (No zlib)</div>
+            <div class="bit-box" style="font-size: 10px;">
+def ascii2binary(text):<br>
+&nbsp;&nbsp;return ''.join(f'{ord(c):08b}' for c in text)<br><br>
+def xordiv(dividend, divisor):<br>
+&nbsp;&nbsp;d, m = list(dividend), len(divisor)  # 33 bits<br>
+&nbsp;&nbsp;for i in range(len(d) - m + 1):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if d[i] == '1':<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for j in range(m):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d[i+j] = '1' if d[i+j] != divisor[j] else '0'<br>
+&nbsp;&nbsp;return ''.join(d[-(m-1):])  # Last 32 bits<br><br>
+def compute_crc(text):<br>
+&nbsp;&nbsp;return xordiv(ascii2binary(text) + '0'*32, get_divisor())
             </div>
           </div>
         </div>
 
-        <div class="bezel-outer">
-          <div class="bezel-inner">
-            <span class="tag-badge">DECISION MATRIX</span>
-            <div class="bezel-title">Zero-Syndrome Acceptance Check</div>
-            <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 4px;">
-              <div style="background: var(--green-bg); border: 1px solid var(--green-border); border-radius: 6px; padding: 10px 12px;">
-                <div style="font-size: 13px; font-weight: 700; color: var(--green-text); margin-bottom: 3px;">
-                  ✓ ACCEPT (Remainder == "0"*32)
-                </div>
-                <div style="font-size: 11.5px; color: var(--green-text);">
-                  Zero remainder proves the received message is algebraically congruent to the sender's transmission. Log marked authentic.
-                </div>
-              </div>
+        <div style="display: flex; flex-direction: column; gap: 10px; height: 100%;">
+          <table class="guide-table">
+            <thead>
+              <tr>
+                <th>Input Type</th>
+                <th>Processing Flow</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Binary Input</strong></td>
+                <td>Binary String ➔ Direct Validation ➔ <code>xordiv()</code> ➔ CRC Result</td>
+              </tr>
+              <tr>
+                <td><strong>Text Input</strong></td>
+                <td>Text ➔ <code>ascii2binary()</code> ➔ Append 32 Zeros ➔ <code>xordiv()</code> ➔ CRC</td>
+              </tr>
+              <tr>
+                <td><strong>File Input</strong></td>
+                <td>File Upload ➔ FileReader ➔ UTF-8 text ➔ <code>ascii2binary()</code> ➔ CRC</td>
+              </tr>
+            </tbody>
+          </table>
 
-              <div style="background: var(--red-bg); border: 1px solid var(--red-border); border-radius: 6px; padding: 10px 12px;">
-                <div style="font-size: 13px; font-weight: 700; color: var(--red-text); margin-bottom: 3px;">
-                  ✗ REJECT (Remainder != "0"*32)
-                </div>
-                <div style="font-size: 11.5px; color: var(--red-text);">
-                  Non-zero syndrome detected. Transmission noise or malicious payload mutation caught. Log quarantined immediately.
-                </div>
+          <div class="bezel-outer" style="flex: 1;">
+            <div class="bezel-inner">
+              <span class="tag-badge">FUNCTION SPECIFICATION</span>
+              <div class="bezel-title">Data Invariant</div>
+              <div class="bezel-text" style="font-size: 11px;">
+                • <strong>Input:</strong> UTF-8 log message string or file buffer.<br>
+                • <strong>Processing:</strong> Modulo-2 division against session divisor.<br>
+                • <strong>Output:</strong> 32-bit CRC, Hex digest, full step trace.<br>
+                • <strong>Shared Divisor:</strong> <code>compute_crc()</code> and <code>verify()</code> both call <code>get_divisor()</code>.
               </div>
             </div>
           </div>
@@ -826,7 +672,7 @@ eq \mathbf{0}^{32}\).
     </div>
 
     <div class="slide-footer">
-      <div class="footer-left"><span>POST /api/verify Syndrome Verification</span></div>
+      <div class="footer-left"><span>Pure Bitwise Python Engine • 100% Traceable</span></div>
       <div class="footer-ctrls">
         <button class="ctrl-btn" onclick="prevSlide()">← Previous</button>
         <button class="ctrl-btn" onclick="nextSlide()">Next →</button>
@@ -834,59 +680,211 @@ eq \mathbf{0}^{32}\).
     </div>
   </div>
 
-  <!-- ==================== SLIDE 7: ZERO BLACK-BOX ARCHITECTURE ==================== -->
+  <!-- ==================== SLIDE 5: DASHBOARD & APPLICATION DETAILS ==================== -->
+  <div class="slide" id="slide-5">
+    <div class="slide-topbar">
+      <div class="topbar-left">
+        <span class="slide-eyebrow">Slide 5 • User Perspective & Dashboard</span>
+        <h2 class="slide-title">Dashboard & Application Details</h2>
+      </div>
+      <div class="slide-meta">
+        <span class="tag-badge">Frontend Architecture</span>
+        <span class="slide-pill">Slide 05 / 10</span>
+      </div>
+    </div>
+
+    <div class="slide-body">
+      <table class="guide-table" style="margin-bottom: 12px;">
+        <thead>
+          <tr>
+            <th style="width: 22%;">Aspect</th>
+            <th>System Details & Implementation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Software Used</strong></td>
+            <td>Flask 2.3+ REST backend (Port 5000), Vanilla JS frontend, Modern HTML5/CSS3 with Warm Monotone palette.</td>
+          </tr>
+          <tr>
+            <td><strong>Intended Users</strong></td>
+            <td>Industrial plant operators, SCADA instrumentation engineers, edge gateway monitors, QA compliance auditors.</td>
+          </tr>
+          <tr>
+            <td><strong>Dashboard Inputs</strong></td>
+            <td>Original log textarea, file upload (<code>.txt/.log</code>), random telemetry generator, received log textarea, received CRC input.</td>
+          </tr>
+          <tr>
+            <td><strong>Dashboard Outputs</strong></td>
+            <td>Calculated 32-bit CRC, Hex digest, step-by-step binary/padding/remainder calculations, ACCEPT/REJECT status badge.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="bezel-outer">
+        <div class="bezel-inner">
+          <span class="tag-badge">DASHBOARD-TO-CODE PIPELINE</span>
+          <div class="bezel-title">System Execution Flow</div>
+          <div class="bezel-text" style="font-size: 11px;">
+            User Input (Text/File Upload) ➔ Dashboard State ➔ POST /api/compute ➔ <code>ascii2binary()</code> ➔ <code>xordiv()</code> ➔ Return CRC & Steps JSON ➔ Live Dashboard Telemetry Rendering ➔ Receiver Re-ingestion ➔ POST /api/verify ➔ Result Chip [✓ ACCEPT / ✗ REJECT]
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <div class="footer-left"><span>Single-Viewport Architecture • 6px Micro-Scrollbars</span></div>
+      <div class="footer-ctrls">
+        <button class="ctrl-btn" onclick="prevSlide()">← Previous</button>
+        <button class="ctrl-btn" onclick="nextSlide()">Next →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 6: TESTING AND TEST CASES ==================== -->
+  <div class="slide" id="slide-6">
+    <div class="slide-topbar">
+      <div class="topbar-left">
+        <span class="slide-eyebrow">Slide 6 • Verification & Validation</span>
+        <h2 class="slide-title">Testing & Test Cases Matrix</h2>
+      </div>
+      <div class="slide-meta">
+        <span class="tag-badge badge-success">5/5 Passed</span>
+        <span class="slide-pill">Slide 06 / 10</span>
+      </div>
+    </div>
+
+    <div class="slide-body">
+      <table class="guide-table" style="margin-bottom: 12px;">
+        <thead>
+          <tr>
+            <th>Test ID</th>
+            <th>Input Data</th>
+            <th>Operation</th>
+            <th>Expected Result</th>
+            <th>Actual Result</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>TC-01</strong></td>
+            <td>Binary: <code>101100101</code></td>
+            <td>CRC-32 Modulo-2</td>
+            <td>32-bit CRC generated</td>
+            <td>Correct CRC calculated</td>
+            <td><span class="tag-badge badge-success">PASS</span></td>
+          </tr>
+          <tr>
+            <td><strong>TC-02</strong></td>
+            <td>Text: <code>[TURBINE_01] RPM:3450</code></td>
+            <td>CRC Computation</td>
+            <td>32-bit CRC + Hex returned</td>
+            <td>0x367B4724 displayed</td>
+            <td><span class="tag-badge badge-success">PASS</span></td>
+          </tr>
+          <tr>
+            <td><strong>TC-03</strong></td>
+            <td>File: <code>Report_01_Turbine.log</code></td>
+            <td>File Upload CRC</td>
+            <td>Complete file CRC computed</td>
+            <td>Steps 1-5 displayed</td>
+            <td><span class="tag-badge badge-success">PASS</span></td>
+          </tr>
+          <tr>
+            <td><strong>TC-04</strong></td>
+            <td>Modified: <code>RPM:3450</code> ➔ <code>RPM:3451</code></td>
+            <td>Error Detection</td>
+            <td>Non-zero Remainder ➔ REJECT</td>
+            <td>Remainder != 0 (REJECT)</td>
+            <td><span class="tag-badge badge-success">PASS</span></td>
+          </tr>
+          <tr>
+            <td><strong>TC-05</strong></td>
+            <td>Unmodified: Valid Log + CRC</td>
+            <td>Verification Check</td>
+            <td>Remainder = 0³² ➔ ACCEPT</td>
+            <td>Remainder = 0 (ACCEPT)</td>
+            <td><span class="tag-badge badge-success">PASS</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="bezel-outer">
+        <div class="bezel-inner" style="background: var(--green-bg); border-color: var(--green-border);">
+          <div style="font-size: 12px; font-weight: 700; color: var(--green-text);">
+            Mandatory Test Requirements Verified:
+          </div>
+          <div style="font-size: 11px; color: var(--green-text);">
+            ✓ Valid binary bitstream input tested | ✓ UTF-8 string telemetry tested | ✓ Real industrial .log/.txt files tested | ✓ Single-bit flipped error detected (REJECT) | ✓ Unmodified original log verified authentic (ACCEPT)
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <div class="footer-left"><span>Empirical Test Execution • 100% Verification</span></div>
+      <div class="footer-ctrls">
+        <button class="ctrl-btn" onclick="prevSlide()">← Previous</button>
+        <button class="ctrl-btn" onclick="nextSlide()">Next →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 7: ERRORS & CHALLENGES FACED ==================== -->
   <div class="slide" id="slide-7">
     <div class="slide-topbar">
       <div class="topbar-left">
-        <span class="slide-eyebrow">Engineering Rigor</span>
-        <h2 class="slide-title">Zero Black-Box Architecture: No zlib</h2>
+        <span class="slide-eyebrow">Slide 7 • Problem -> Reason -> Solution -> Learning</span>
+        <h2 class="slide-title">Errors and Challenges Faced</h2>
       </div>
       <div class="slide-meta">
-        <span class="tag-badge">Code Architecture</span>
+        <span class="tag-badge">Engineering Retrospective</span>
         <span class="slide-pill">Slide 07 / 10</span>
       </div>
     </div>
 
     <div class="slide-body">
-      <div class="grid-asym-2">
-        <div class="bezel-outer">
-          <div class="bezel-inner">
-            <span class="tag-badge badge-danger">Standard Pitfall</span>
-            <div class="bezel-title">Opaque Library Flaws</div>
-            <div class="bezel-text" style="font-size: 12px; margin-bottom: 6px;">
-              Most student and production systems rely on <span class="font-mono">zlib.crc32()</span> or <span class="font-mono">binascii.crc32()</span>:
-            </div>
-            <ul style="padding-left: 18px; font-size: 11.5px; color: var(--text-muted); line-height: 1.55;">
-              <li><strong>Zero Step Visibility:</strong> Cannot view intermediate bit transformations or generator operations.</li>
-              <li><strong>Hardcoded Inflexible Generator:</strong> Fixed strictly to IEEE 802.3 polynomial, preventing dynamic session keys.</li>
-              <li><strong>No Educational Value:</strong> Black-box call obscures modulo-2 XOR mechanics during viva examination.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="bezel-outer">
-          <div class="bezel-inner">
-            <span class="tag-badge badge-success">Our Handwritten Implementation</span>
-            <div class="bezel-title">Handcrafted Pure Python Modulo-2 Engine</div>
-            <div class="bit-box" style="font-size: 11px;">
-              def xordiv(dividend, divisor):<br>
-              &nbsp;&nbsp;div_len = len(divisor) &nbsp;<span style="color: var(--text-muted);"># 33 bits</span><br>
-              &nbsp;&nbsp;cur = list(dividend[:div_len])<br>
-              &nbsp;&nbsp;for bit in dividend[div_len:]:<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;if cur[0] == "1":<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cur = [str(int(cur[i]) ^ int(divisor[i])) for i in range(div_len)]<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;cur = cur[1:] + [bit]<br>
-              &nbsp;&nbsp;if cur[0] == "1":<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;cur = [str(int(cur[i]) ^ int(divisor[i])) for i in range(div_len)]<br>
-              &nbsp;&nbsp;return "".join(cur[1:]) &nbsp;<span style="color: var(--text-muted);"># Last 32 bits</span>
-            </div>
-          </div>
-        </div>
-      </div>
+      <table class="guide-table">
+        <thead>
+          <tr>
+            <th style="width: 20%;">Problem / Challenge</th>
+            <th style="width: 26%;">Root Cause</th>
+            <th style="width: 28%;">Engineering Solution</th>
+            <th>Learning Outcome</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Polynomial Bit Length</strong></td>
+            <td>Using 32-bit divisor for 32-bit CRC caused degree underflow.</td>
+            <td>Generated 33-bit divisor with MSB=1 and LSB=1 (degree 32).</td>
+            <td>Understood that degree-n polynomial requires n+1 coefficients.</td>
+          </tr>
+          <tr>
+            <td><strong>Modulo-2 Long Division</strong></td>
+            <td>Integer division propagates carries, producing arithmetic quotient.</td>
+            <td>Built handwritten bitwise XOR loop shifting without carries/borrows.</td>
+            <td>Mastered Galois Field GF(2) long division algorithms.</td>
+          </tr>
+          <tr>
+            <td><strong>Divisor Synchronization</strong></td>
+            <td>Sender & receiver generated different random polynomials.</td>
+            <td>Created singleton <code>get_divisor()</code> fixed for entire session in memory.</td>
+            <td>Learned session-level state management and protocol parity.</td>
+          </tr>
+          <tr>
+            <td><strong>Single-Screen Layout</strong></td>
+            <td>Long step outputs created ugly outer window scrolling.</td>
+            <td>Engineered 2-row CSS grid with internal 6px custom scrollbars.</td>
+            <td>Mastered responsive viewport budgeting without layout thrashing.</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
     <div class="slide-footer">
-      <div class="footer-left"><span>Pure Bitwise Python • 100% Traceable Execution</span></div>
+      <div class="footer-left"><span>System Debugging • Root Cause Analysis</span></div>
       <div class="footer-ctrls">
         <button class="ctrl-btn" onclick="prevSlide()">← Previous</button>
         <button class="ctrl-btn" onclick="nextSlide()">Next →</button>
@@ -894,70 +892,60 @@ eq \mathbf{0}^{32}\).
     </div>
   </div>
 
-  <!-- ==================== SLIDE 8: UI & ERGONOMIC DESIGN ==================== -->
+  <!-- ==================== SLIDE 8: ADDITIONAL FEATURES & LIVE DEMO ==================== -->
   <div class="slide" id="slide-8">
     <div class="slide-topbar">
       <div class="topbar-left">
-        <span class="slide-eyebrow">Human-Computer Interaction</span>
-        <h2 class="slide-title">UI Architecture: 2-Row Single-Viewport Layout</h2>
+        <span class="slide-eyebrow">Slide 8 • Additional Features & Playbook</span>
+        <h2 class="slide-title">Additional Features & Live Demonstration Sequence</h2>
       </div>
       <div class="slide-meta">
-        <span class="tag-badge">Interface System</span>
+        <span class="tag-badge">Live Demonstration</span>
         <span class="slide-pill">Slide 08 / 10</span>
       </div>
     </div>
 
     <div class="slide-body">
-      <div class="grid-3col">
+      <div class="grid-2col" style="margin-bottom: 10px;">
         <div class="bezel-outer">
           <div class="bezel-inner">
-            <span class="tag-badge">ROW 1 (TOP)</span>
-            <div class="bezel-title">Input & Control Bay</div>
-            <div class="bezel-text" style="font-size: 12px;">
-              Dual-column split separating the original sender log and the received verification buffer:
+            <span class="tag-badge">WORKING ADDITIONAL FEATURES</span>
+            <div class="bezel-title">System Highlights</div>
+            <div class="bezel-text" style="font-size: 11.5px; line-height: 1.5;">
+              • <strong>Session-Fixed 33-Bit Generator:</strong> Singleton polynomial synchronized via GET /api/divisor.<br>
+              • <strong>10-Report Demo Pack:</strong> Industrial SCADA test reports pre-populated in Downloads for file upload testing.<br>
+              • <strong>Step-by-Step Telemetry:</strong> Live ASCII binary, 32-0 padding, divisor, and remainder inspectability.<br>
+              • <strong>Dual-Row Single Viewport UI:</strong> 2-row layout with subtle 6px scrollbars and instant random log generator.
             </div>
-            <ul style="padding-left: 18px; font-size: 11.5px; color: var(--text-muted); line-height: 1.5; margin-top: 4px;">
-              <li><strong>FileReader Uploads:</strong> One-click <span class="font-mono">.txt</span> or <span class="font-mono">.log</span> ingestion.</li>
-              <li><strong>Live Generator:</strong> Injects realistic industrial telemetry events on demand.</li>
-              <li><strong>Inline CRC Fields:</strong> Pre-populates computed checksum into receiver card.</li>
-            </ul>
           </div>
         </div>
 
         <div class="bezel-outer">
           <div class="bezel-inner">
-            <span class="tag-badge">ROW 2 (BOTTOM)</span>
-            <div class="bezel-title">Process Steps Telemetry</div>
-            <div class="bezel-text" style="font-size: 12px;">
-              Real-time audit trail displaying intermediate mathematical calculations:
+            <span class="tag-badge">DEMONSTRATION PLAYBOOK</span>
+            <div class="bezel-title">5-Step Live Sequence (Guideline Sec 12)</div>
+            <div class="bezel-text" style="font-size: 11.5px; line-height: 1.5;">
+              1. <strong>PPT Window:</strong> Explain Problem, Math & Architecture (Slides 1-4).<br>
+              2. <strong>Dashboard Window:</strong> Upload <code>Report_01_Turbine.log</code> & compute CRC.<br>
+              3. <strong>Code Window:</strong> Trace <code>ascii2binary()</code> and <code>xordiv()</code> in <code>crc_checker.py</code>.<br>
+              4. <strong>Dashboard Window:</strong> Demonstrate Accept (0³²) & Reject (modify 1 character).<br>
+              5. <strong>Summary:</strong> Conclude with integrity guarantees & Viva defense.
             </div>
-            <ul style="padding-left: 18px; font-size: 11.5px; color: var(--text-muted); line-height: 1.5; margin-top: 4px;">
-              <li><strong>Binary Inspection:</strong> Complete ASCII bitstream conversion.</li>
-              <li><strong>Padding & Polynomial:</strong> Shows exactly how 32 zeros are suffixed.</li>
-              <li><strong>Subtle 6px Scrollbars:</strong> Smooth scroll strictly inside step cards without whole-page scroll.</li>
-            </ul>
           </div>
         </div>
+      </div>
 
-        <div class="bezel-outer">
-          <div class="bezel-inner">
-            <span class="tag-badge">AESTHETICS</span>
-            <div class="bezel-title">Warm Monotone System</div>
-            <div class="bezel-text" style="font-size: 12px;">
-              Editorial, tactile visual tokens replacing generic dark blue themes:
-            </div>
-            <ul style="padding-left: 18px; font-size: 11.5px; color: var(--text-muted); line-height: 1.5; margin-top: 4px;">
-              <li><strong>Warm Ivory:</strong> <span class="font-mono">#fff8e7</span> base with <span class="font-mono">#efe5d5</span> parchment shells.</li>
-              <li><strong>Ochre Accents:</strong> <span class="font-mono">#e3c08f</span> for highlights and focus states.</li>
-              <li><strong>Plain SVG Theme Toggle:</strong> Clean borderless sun/moon icon.</li>
-            </ul>
+      <div class="bezel-outer">
+        <div class="bezel-inner" style="background: var(--surface-accent); padding: 8px 14px;">
+          <div style="font-size: 11.5px; font-weight: 700; color: #45341c;">
+            Three Windows Prepared for Live Demo: 1. PowerPoint Presentation | 2. Dashboard (http://localhost:5000) | 3. Python Code (VS Code)
           </div>
         </div>
       </div>
     </div>
 
     <div class="slide-footer">
-      <div class="footer-left"><span>Single-Viewport Layout • Zero Unwanted Overflow</span></div>
+      <div class="footer-left"><span>3-Window Demonstration Flow • PPT ➔ Dashboard ➔ Code</span></div>
       <div class="footer-ctrls">
         <button class="ctrl-btn" onclick="prevSlide()">← Previous</button>
         <button class="ctrl-btn" onclick="nextSlide()">Next →</button>
@@ -965,12 +953,12 @@ eq \mathbf{0}^{32}\).
     </div>
   </div>
 
-  <!-- ==================== SLIDE 9: VIVA DEFENSE & FAQS ==================== -->
+  <!-- ==================== SLIDE 9: VIVA VOCE PREPARATION ==================== -->
   <div class="slide" id="slide-9">
     <div class="slide-topbar">
       <div class="topbar-left">
-        <span class="slide-eyebrow">Examiner Defense</span>
-        <h2 class="slide-title">Viva Voce Preparation & Technical Defense</h2>
+        <span class="slide-eyebrow">Slide 9 • Important Questions (Guideline Sec 12 & 13)</span>
+        <h2 class="slide-title">Viva Voce & Technical Defense Preparation</h2>
       </div>
       <div class="slide-meta">
         <span class="tag-badge">Viva Q&A</span>
@@ -982,22 +970,35 @@ eq \mathbf{0}^{32}\).
       <div class="grid-2col">
         <div class="bezel-outer">
           <div class="bezel-inner">
-            <span class="tag-badge">VIVA QUESTION 01</span>
-            <div class="bezel-title">Why a 33-bit divisor for a 32-bit CRC?</div>
-            <div class="bezel-text" style="font-size: 12px;">
-              <strong>Examiner Trap:</strong> Students often assume a 32-bit CRC uses a 32-bit divisor.<br>
-              <strong>Scientific Answer:</strong> A polynomial of degree \(n\) requires \(n+1\) coefficients. To obtain an \(n\)-bit remainder (\(x^{31}\) to \(x^0\)), the generator polynomial must be of degree \(n = 32\) (\(x^{32} + \dots + 1\)), which consists of strictly <strong>33 bits</strong>.
+            <span class="tag-badge">MATHEMATICAL CONCEPTS</span>
+            <div class="bezel-title">Concept Defense</div>
+            <div class="bezel-text" style="font-size: 11px; line-height: 1.45;">
+              • <strong>Q: What is CRC & why used?</strong><br>
+              Cyclic Redundancy Check; detects burst errors using polynomial long division over GF(2).<br><br>
+              • <strong>Q: Why 33-bit divisor for 32-bit CRC?</strong><br>
+              A degree-32 polynomial has 33 coefficients. Dividing by degree-32 strictly leaves a remainder of degree &le; 31 (32 bits).<br><br>
+              • <strong>Q: Why is XOR used instead of subtraction?</strong><br>
+              In GF(2), addition and subtraction are identical to bitwise XOR with no carries or borrows.<br><br>
+              • <strong>Q: Can CRC correct errors?</strong><br>
+              CRC is strictly for error detection. Error correction requires FEC (e.g. Reed-Solomon).
             </div>
           </div>
         </div>
 
         <div class="bezel-outer">
           <div class="bezel-inner">
-            <span class="tag-badge">VIVA QUESTION 02</span>
-            <div class="bezel-title">Why not standard arithmetic division?</div>
-            <div class="bezel-text" style="font-size: 12px;">
-              <strong>Examiner Trap:</strong> Why use bitwise XOR instead of decimal/integer division?<br>
-              <strong>Scientific Answer:</strong> Standard integer division has carries and borrows that propagate across word boundaries, requiring complex ALUs. Modulo-2 arithmetic in \(GF(2)\) maps directly onto single-cycle hardware XOR gates, enabling line-rate 100 Gbps network throughput.
+            <span class="tag-badge">IMPLEMENTATION & VERIFICATION</span>
+            <div class="bezel-title">Code & Verification Defense</div>
+            <div class="bezel-text" style="font-size: 11px; line-height: 1.45;">
+              • <strong>Q: How is text converted before CRC?</strong><br>
+              Each character is converted to 8-bit ASCII binary via <code>ascii2binary()</code> and concatenated.<br><br>
+              • <strong>Q: How does the receiver detect an error?</strong><br>
+              Codeword \(T'(x) = 	ext{Data} + 	ext{Received CRC}\) is divided by \(G(x)\). If remainder is \(0^{32}\) ➔ ACCEPT; else REJECT.<br><br>
+              • <strong>Q: What happens if one bit is changed?</strong><br>
+              The polynomial \(M'(x)\) differs from \(M(x)\), resulting in a non-zero syndrome remainder \(R'(x) 
+eq 0\).<br><br>
+              • <strong>Q: What error types are 100% detected?</strong><br>
+              All single-bit errors, all double-bit errors, and all burst errors &le; 32 bits.
             </div>
           </div>
         </div>
@@ -1005,7 +1006,7 @@ eq \mathbf{0}^{32}\).
     </div>
 
     <div class="slide-footer">
-      <div class="footer-left"><span>Theoretical Rigor & Mathematical Proofs</span></div>
+      <div class="footer-left"><span>19 Viva Defense Points Prepared</span></div>
       <div class="footer-ctrls">
         <button class="ctrl-btn" onclick="prevSlide()">← Previous</button>
         <button class="ctrl-btn" onclick="nextSlide()">Next →</button>
@@ -1013,12 +1014,12 @@ eq \mathbf{0}^{32}\).
     </div>
   </div>
 
-  <!-- ==================== SLIDE 10: CONCLUSION & SUMMARY ==================== -->
+  <!-- ==================== SLIDE 10: PRODUCT SUMMARY ==================== -->
   <div class="slide" id="slide-10">
     <div class="slide-topbar">
       <div class="topbar-left">
-        <span class="slide-eyebrow">Conclusion & Specification</span>
-        <h2 class="slide-title">System Metrics & Deliverable Summary</h2>
+        <span class="slide-eyebrow">Slide 10 • Final Slide • Product Summary</span>
+        <h2 class="slide-title">Product Summary & Key Learning Outcomes</h2>
       </div>
       <div class="slide-meta">
         <span class="tag-badge badge-success">Production Ready</span>
@@ -1027,30 +1028,31 @@ eq \mathbf{0}^{32}\).
     </div>
 
     <div class="slide-body">
-      <div class="grid-asym-1">
+      <div class="grid-2col">
         <div class="bezel-outer">
           <div class="bezel-inner">
-            <span class="tag-badge">DELIVERABLES MATRIX</span>
-            <div class="bezel-title">Complete Full-Stack Architecture</div>
-            <div style="display: flex; flex-direction: column; gap: 8px; font-size: 12px; color: var(--text-muted); margin-top: 4px;">
-              <div><strong>Backend API:</strong> Flask REST service hosting <span class="font-mono">/api/compute</span> and <span class="font-mono">/api/verify</span>.</div>
-              <div><strong>Algorithm:</strong> Pure Python bitwise Galois Field Modulo-2 XOR long division.</div>
-              <div><strong>Frontend:</strong> 2-row responsive single-screen dashboard with custom 6px scrollbars.</div>
-              <div><strong>Design Language:</strong> Warm Monotone editorial palette (<span class="font-mono">#fff8e7</span>, <span class="font-mono">#efe5d5</span>, <span class="font-mono">#e3c08f</span>).</div>
+            <span class="tag-badge">PRODUCT SUMMARY</span>
+            <div class="bezel-title">System Deliverables</div>
+            <div class="bezel-text" style="font-size: 11.5px; line-height: 1.5;">
+              • <strong>Developed Product:</strong> Industrial Machine Log Integrity Checker (Product 8).<br>
+              • <strong>Supported Input Types:</strong> Binary streams, UTF-8 strings, industrial <code>.log / .txt</code> files.<br>
+              • <strong>Supported CRC Algorithm:</strong> Pure Modulo-2 XOR CRC-32 with session-fixed 33-bit generator polynomial.<br>
+              • <strong>Error Detection Capabilities:</strong> 100% single bit, 100% double bit, 100% bursts &le; 32 bits, 99.99999997% longer bursts.<br>
+              • <strong>Software Stack:</strong> Python 3, Flask REST API, Vanilla HTML5/CSS3/JS, Warm Monotone Single-Screen UI.
             </div>
           </div>
         </div>
 
         <div class="bezel-outer">
-          <div class="bezel-inner">
-            <span class="tag-badge">KEY METRICS</span>
-            <div class="bezel-title">Integrity Guarantees</div>
-            <div style="display: flex; flex-direction: column; gap: 6px; font-size: 12px; color: var(--text-muted); margin-top: 4px;">
-              <div>• <strong>Single Bit Errors:</strong> 100% Detection</div>
-              <div>• <strong>Double Bit Errors:</strong> 100% Detection</div>
-              <div>• <strong>Burst Errors (≤ 32 bits):</strong> 100% Detection</div>
-              <div>• <strong>Longer Bursts (> 32 bits):</strong> 99.99999997% Detection</div>
-              <div>• <strong>External Dependencies:</strong> 0 Black-box libs</div>
+          <div class="bezel-inner" style="background: var(--green-bg); border-color: var(--green-border);">
+            <span class="tag-badge badge-success">LEARNING OUTCOMES</span>
+            <div class="bezel-title" style="color: var(--green-text);">OS & Computer Networks</div>
+            <div class="bezel-text" style="font-size: 11.5px; line-height: 1.5; color: var(--green-text);">
+              1. <strong>Protocol Parity:</strong> Implemented synchronized sender-receiver telemetry pipelines.<br>
+              2. <strong>Bitwise Computing:</strong> Built low-level bit shifting and XOR operations without black-box libraries (<code>no zlib</code>).<br>
+              3. <strong>Error Detection:</strong> Understood why polynomial division surpasses additive checksums.<br>
+              4. <strong>Full-Stack Integration:</strong> Integrated Flask REST endpoints with real-time UI telemetry and FileReader APIs.<br>
+              5. <strong>Team Collaboration:</strong> Successfully bifurcated responsibilities across 5 group members.
             </div>
           </div>
         </div>

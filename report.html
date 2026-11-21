@@ -6,7 +6,7 @@
 <style>
   @page {
     size: A4 portrait;
-    margin: 8mm 12mm 10mm 12mm;
+    margin: 10mm 15mm 12mm 15mm;
   }
   
   * {
@@ -16,11 +16,11 @@
   }
   
   body {
-    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
-    color: #1f2429;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    color: #111111;
     background: #ffffff;
     font-size: 8.8pt;
-    line-height: 1.35;
+    line-height: 1.38;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
@@ -28,108 +28,100 @@
   /* Page Enclosure */
   .report-page {
     width: 100%;
-    height: 279mm;
-    max-height: 279mm;
+    height: 275mm;
+    max-height: 275mm;
     overflow: hidden;
     page-break-after: always;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     position: relative;
-    padding: 0;
+    background: #ffffff;
   }
   
   .report-page:last-child {
     page-break-after: avoid;
   }
 
-  /* Running Header & Footer */
+  /* Header & Footer (Minimal Hairlines) */
   .page-header {
-    border-bottom: 1.5px solid #dcd5ca;
-    padding-bottom: 3px;
-    margin-bottom: 6px;
+    border-bottom: 1px solid #111111;
+    padding-bottom: 4px;
+    margin-bottom: 8px;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    font-size: 7.5pt;
+    font-size: 7.2pt;
     font-weight: 600;
-    color: #6e6559;
+    color: #444444;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.6px;
   }
   
   .page-footer {
-    border-top: 1px solid #e2ddd5;
-    padding-top: 3px;
-    margin-top: 4px;
+    border-top: 1px solid #cccccc;
+    padding-top: 4px;
+    margin-top: 6px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 7.5pt;
-    color: #7a7267;
+    font-size: 7.2pt;
+    color: #666666;
   }
 
   .page-content {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 4.5px;
     overflow: hidden;
   }
 
-  /* Typography */
+  /* Minimal Typography */
   h1.doc-title {
     font-size: 20pt;
-    font-weight: 800;
-    color: #241e17;
-    letter-spacing: -0.5px;
+    font-weight: 700;
+    color: #111111;
+    letter-spacing: -0.4px;
     line-height: 1.15;
   }
   
   h2.chapter-title {
-    font-size: 10.5pt;
-    font-weight: 800;
-    color: #241e17;
-    background: #f7f3ec;
-    border-left: 3.5px solid #c8a774;
-    padding: 3px 6px;
-    margin-bottom: 3px;
+    font-size: 10pt;
+    font-weight: 700;
+    color: #111111;
+    border-bottom: 1px solid #111111;
+    padding-bottom: 2px;
+    margin-bottom: 4px;
     text-transform: uppercase;
-    letter-spacing: 0.3px;
+    letter-spacing: 0.4px;
   }
 
   h3.section-title {
-    font-size: 8.8pt;
+    font-size: 8.7pt;
     font-weight: 700;
-    color: #3b3226;
+    color: #111111;
     margin-top: 2px;
     margin-bottom: 1px;
-    display: flex;
-    align-items: center;
-    gap: 4px;
   }
 
   p {
     font-size: 8.5pt;
-    color: #2e2820;
+    color: #222222;
     text-align: justify;
     margin-bottom: 2px;
-  }
-
-  p strong {
-    color: #1a1510;
   }
 
   ul, ol {
     margin-left: 14px;
     font-size: 8.3pt;
-    color: #2e2820;
+    color: #222222;
     margin-bottom: 2px;
   }
 
   li {
     margin-bottom: 1px;
-    line-height: 1.3;
+    line-height: 1.32;
   }
 
   /* Monospace & Code */
@@ -139,276 +131,198 @@
   }
 
   pre.code-block {
-    background: #fcfbfa;
-    border: 1px solid #e6dfd5;
-    border-radius: 3px;
-    padding: 4px 6px;
+    background: #f8f8f8;
+    border: 1px solid #e2e2e2;
+    border-radius: 2px;
+    padding: 5px 7px;
     font-family: 'Consolas', monospace;
-    font-size: 7.8pt;
+    font-size: 7.6pt;
     line-height: 1.25;
-    color: #241e17;
+    color: #111111;
     overflow-x: hidden;
     margin: 2px 0;
   }
 
   .inline-code {
-    background: #f3ede2;
+    background: #f0f0f0;
     padding: 0.5px 3px;
     border-radius: 2px;
     font-family: 'Consolas', monospace;
     font-size: 8pt;
-    color: #7a460a;
+    color: #111111;
   }
 
-  /* Callout Boxes */
-  .card-box {
+  /* Minimal Clean Box (No Heavy Shadows or Colors) */
+  .clean-box {
     background: #ffffff;
-    border: 1px solid #e2ddd5;
-    border-radius: 4px;
-    padding: 5px 8px;
+    border: 1px solid #dcdcdc;
+    border-radius: 2px;
+    padding: 6px 9px;
     margin-bottom: 3px;
   }
 
-  .card-warm {
-    background: #faf6f0;
-    border: 1px solid #ebdcc5;
+  .clean-box-subtle {
+    background: #fafafa;
+    border: 1px solid #e5e5e5;
   }
 
-  .card-alert {
-    background: #fdf5f5;
-    border: 1px solid #f3c9c9;
-  }
-
-  .card-success {
-    background: #f4faf4;
-    border: 1px solid #cbe9cb;
-  }
-
-  /* Tables */
-  table.report-table {
+  /* Minimal Academic Tables (Booktabs Style) */
+  table.minimal-table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 8pt;
-    margin: 2px 0 4px 0;
+    font-size: 7.9pt;
+    margin: 3px 0 4px 0;
   }
 
-  table.report-table th {
-    background: #f2ebe1;
-    color: #241e17;
+  table.minimal-table th {
+    border-top: 1.2px solid #111111;
+    border-bottom: 1px solid #111111;
+    color: #111111;
     font-weight: 700;
     text-align: left;
     padding: 3px 5px;
-    border: 1px solid #ded6ca;
+    background: transparent;
   }
 
-  table.report-table td {
-    padding: 2.5px 5px;
-    border: 1px solid #e8e2d8;
-    color: #2e2820;
+  table.minimal-table td {
+    padding: 2.8px 5px;
+    border-bottom: 1px solid #e8e8e8;
+    color: #222222;
     vertical-align: top;
   }
 
-  table.report-table tr:nth-child(even) td {
-    background: #faf8f5;
+  table.minimal-table tr:last-child td {
+    border-bottom: 1.2px solid #111111;
   }
 
-  .badge {
-    display: inline-block;
-    padding: 1px 4px;
-    border-radius: 3px;
-    font-size: 7.2pt;
+  .status-text-pass {
     font-weight: 700;
-    text-transform: uppercase;
+    color: #111111;
   }
 
-  .badge-pass {
-    background: #e6f4ea;
-    color: #137333;
-    border: 1px solid #ceead6;
+  .status-text-fail {
+    font-weight: 700;
+    color: #111111;
   }
 
-  .badge-fail {
-    background: #fce8e6;
-    color: #c5221f;
-    border: 1px solid #fad2cf;
-  }
-
-  .badge-info {
-    background: #e8f0fe;
-    color: #1a73e8;
-    border: 1px solid #d2e3fc;
-  }
-
-  /* Two Column Layout */
   .grid-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 6px;
+    gap: 8px;
   }
 
-  /* Front Page Specific Styles */
-  .front-container {
+  /* Minimal Front Page */
+  .front-container-minimal {
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    border: 2px solid #c8a774;
-    padding: 16px 20px;
-    background: #fffdfa;
-    border-radius: 4px;
-  }
-
-  .univ-header {
-    text-align: center;
-    border-bottom: 2px solid #e6ded3;
-    padding-bottom: 10px;
-  }
-
-  .univ-name {
-    font-size: 15pt;
-    font-weight: 800;
-    color: #241e17;
-    letter-spacing: 0.5px;
-  }
-
-  .dept-name {
-    font-size: 10pt;
-    font-weight: 700;
-    color: #735932;
-    margin-top: 2px;
-  }
-
-  .course-name {
-    font-size: 8.5pt;
-    font-weight: 600;
-    color: #6e6559;
-    margin-top: 1px;
-  }
-
-  .front-body {
-    text-align: center;
-    margin: 8px 0;
-  }
-
-  .pill-tag {
-    display: inline-block;
-    background: #f3ede2;
-    color: #735932;
-    border: 1px solid #d8caa7;
-    font-size: 8pt;
-    font-weight: 700;
-    padding: 2px 8px;
-    border-radius: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    margin-bottom: 6px;
-  }
-
-  .front-demonstration {
-    background: #faf6ef;
-    border: 1px solid #e0d5c3;
-    border-radius: 4px;
-    padding: 8px 12px;
-    text-align: left;
-    margin: 8px 0;
-  }
-
-  .front-team-box {
+    border: 1px solid #111111;
+    padding: 22px 24px;
     background: #ffffff;
-    border: 1px solid #dcd5ca;
-    border-radius: 4px;
-    padding: 8px 12px;
-    text-align: left;
   }
 
-  .front-footer {
+  .front-header-minimal {
+    text-align: center;
+    border-bottom: 1px solid #111111;
+    padding-bottom: 12px;
+  }
+
+  .front-body-minimal {
+    text-align: center;
+    margin: 10px 0;
+  }
+
+  .front-footer-minimal {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-top: 1.5px solid #e6ded3;
-    padding-top: 6px;
-    font-size: 8pt;
-    color: #6e6559;
+    border-top: 1px solid #111111;
+    padding-top: 8px;
+    font-size: 7.5pt;
+    color: #444444;
   }
 </style>
 </head>
 <body>
 
 <!-- ========================================================================= -->
-<!-- PAGE 1: FRONT PAGE (As per PPT Front Page)                                -->
+<!-- PAGE 1: FRONT PAGE (Simple & Minimal Academic Style)                       -->
 <!-- ========================================================================= -->
 <div class="report-page">
-  <div class="front-container">
-    <div class="univ-header">
-      <div class="univ-name">SR UNIVERSITY</div>
-      <div class="dept-name">DEPARTMENT OF COMPUTER SCIENCE &amp; ENGINEERING</div>
-      <div class="course-name">OPERATING SYSTEMS &amp; COMPUTER NETWORKS LABORATORY (CSE312)</div>
+  <div class="front-container-minimal">
+    <div class="front-header-minimal">
+      <div style="font-size: 14pt; font-weight: 700; letter-spacing: 0.5px;">SR UNIVERSITY</div>
+      <div style="font-size: 9.5pt; font-weight: 600; color: #444444; margin-top: 2px;">DEPARTMENT OF COMPUTER SCIENCE &amp; ENGINEERING</div>
+      <div style="font-size: 8.5pt; color: #666666; margin-top: 1px;">OPERATING SYSTEMS &amp; COMPUTER NETWORKS LABORATORY (CSE312)</div>
     </div>
 
-    <div class="front-body">
-      <div class="pill-tag">PROJECT REPORT &bull; PRODUCT 8 &bull; GROUP VIII</div>
-      <h1 class="doc-title" style="margin-bottom: 4px;">Industrial Machine Log Integrity Checker</h1>
-      <p style="font-size: 9.5pt; color: #5a4e40; max-width: 90%; margin: 0 auto; line-height: 1.35; text-align: center;">
+    <div class="front-body-minimal">
+      <div style="font-size: 8.5pt; font-weight: 700; letter-spacing: 1px; color: #555555; text-transform: uppercase; margin-bottom: 6px;">
+        LABORATORY PROJECT REPORT &bull; PRODUCT 8 &bull; GROUP VIII
+      </div>
+      <h1 class="doc-title" style="margin-bottom: 6px;">Industrial Machine Log Integrity Checker</h1>
+      <p style="font-size: 9.5pt; color: #444444; max-width: 88%; margin: 0 auto; text-align: center; font-style: italic;">
         Detecting corrupted or tampered machine telemetry logs using a handwritten Modulo-2 CRC-32 polynomial division engine.
       </p>
     </div>
 
-    <!-- Visual Demonstration Box Matching PPT Slide 1 -->
-    <div class="front-demonstration">
-      <div style="font-size: 8pt; font-weight: 800; color: #8a652e; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 4px;">
-        Mathematical &amp; Threat Context: One Bit, One Different Reading
+    <!-- Threat Demonstration Block -->
+    <div class="clean-box-subtle" style="padding: 10px 14px; text-align: left;">
+      <div style="font-size: 7.8pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 5px;">
+        Operating Threat: One Bit, One Different Reading
       </div>
-      <div class="grid-2" style="font-family: 'Consolas', monospace; font-size: 7.8pt; line-height: 1.3;">
-        <div style="background: #ffffff; padding: 5px 8px; border: 1px solid #e2ddd5; border-radius: 3px;">
-          <strong>Original Sensor Reading:</strong><br>
-          Character '0' &rarr; ASCII 48 &rarr; <code>00110000</code><br>
-          <span style="color: #276722; font-weight: 700;">[TURBINE_01] RPM:3450 TEMP:82.4C</span><br>
-          <em>Normal Operating Threshold (Pass)</em>
+      <div class="grid-2" style="font-family: 'Consolas', monospace; font-size: 7.8pt; line-height: 1.35;">
+        <div style="background: #ffffff; padding: 6px 9px; border: 1px solid #dcdcdc;">
+          <strong>Original Telemetry Reading:</strong><br>
+          '0' &rarr; ASCII 48 &rarr; <code>00110000</code><br>
+          <code>[TURBINE_01] RPM:3450 TEMP:82.4C</code><br>
+          <em>Status: Normal Operating Value</em>
         </div>
-        <div style="background: #ffffff; padding: 5px 8px; border: 1px solid #f0cccc; border-radius: 3px;">
-          <strong>1-Bit Flipped Noise Mutation:</strong><br>
-          Character '1' &rarr; ASCII 49 &rarr; <code>00110001</code><br>
-          <span style="color: #a8251e; font-weight: 700;">[TURBINE_01] RPM:3451 TEMP:82.4C</span><br>
-          <em>Altered telemetry flips critical audit records</em>
+        <div style="background: #ffffff; padding: 6px 9px; border: 1px solid #dcdcdc;">
+          <strong>1-Bit In-Flight Noise Mutation:</strong><br>
+          '1' &rarr; ASCII 49 &rarr; <code>00110001</code><br>
+          <code>[TURBINE_01] RPM:3451 TEMP:82.4C</code><br>
+          <em>Status: Mutated Metric State</em>
         </div>
       </div>
-      <div style="font-size: 7.5pt; color: #6e6559; margin-top: 4px; font-style: italic;">
-        Flip the least significant bit of a single character and the log reports a different metric. The CRC-32 engine computes a 32-bit Modulo-2 remainder that catches this mutation with 100% mathematical certainty.
-      </div>
+      <p style="font-size: 7.5pt; color: #555555; margin-top: 5px; font-style: italic;">
+        In high-voltage SCADA environments, flipping a single bit transforms a normal status into an invalid state. The Modulo-2 CRC-32 engine produces a 32-bit algebraic syndrome that detects all single, double, and burst bit errors with 100% mathematical determinism.
+      </p>
     </div>
 
-    <!-- Team Responsibilities Bifurcated as per Guideline Section 10 -->
-    <div class="front-team-box">
-      <div style="font-size: 8pt; font-weight: 800; color: #241e17; text-transform: uppercase; margin-bottom: 4px; border-bottom: 1px solid #efeae1; padding-bottom: 2px;">
-        Team Responsibilities &amp; Demonstration Roles (Group VIII)
+    <!-- Group VIII Details & Roles -->
+    <div class="clean-box" style="padding: 10px 14px; text-align: left;">
+      <div style="font-size: 8pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; border-bottom: 1px solid #e5e5e5; padding-bottom: 3px;">
+        Group VIII Members &amp; Demonstration Responsibilities (Guideline Section 10)
       </div>
-      <table style="width: 100%; font-size: 7.8pt; line-height: 1.3; border-collapse: collapse;">
+      <table style="width: 100%; font-size: 7.8pt; line-height: 1.35; border-collapse: collapse;">
         <tr>
-          <td style="width: 25%; font-weight: 700; color: #241e17; padding: 1.5px 0;">&bull; ROGER A RAJU</td>
-          <td style="color: #5a4e40;"><strong>Project Lead &amp; Architecture:</strong> Problem statement, product requirements, system flow &amp; dataset management.</td>
+          <td style="width: 25%; font-weight: 700;">&bull; ROGER A RAJU</td>
+          <td style="color: #444444;"><strong>Project Lead &amp; Architecture:</strong> Problem statement, product requirements, system flow &amp; dataset management.</td>
         </tr>
         <tr>
-          <td style="font-weight: 700; color: #241e17; padding: 1.5px 0;">&bull; K. ROHIT GOUD</td>
-          <td style="color: #5a4e40;"><strong>Algorithms Lead:</strong> Galois Field GF(2) algebra, Modulo-2 XOR logic &amp; CRC-32 polynomial division engine.</td>
+          <td style="font-weight: 700;">&bull; K. ROHIT GOUD</td>
+          <td style="color: #444444;"><strong>Algorithms Lead:</strong> Galois Field GF(2) algebra, Modulo-2 XOR logic &amp; CRC-32 polynomial division engine.</td>
         </tr>
         <tr>
-          <td style="font-weight: 700; color: #241e17; padding: 1.5px 0;">&bull; G. SIDDHARTHA</td>
-          <td style="color: #5a4e40;"><strong>Data Ingestion Lead:</strong> ASCII-to-binary bitstream mapping, FileReader uploads (.log/.txt) &amp; UI integration.</td>
+          <td style="font-weight: 700;">&bull; G. SIDDHARTHA</td>
+          <td style="color: #444444;"><strong>Data Ingestion Lead:</strong> ASCII-to-binary bitstream mapping, FileReader uploads (.log/.txt) &amp; UI integration.</td>
         </tr>
         <tr>
-          <td style="font-weight: 700; color: #241e17; padding: 1.5px 0;">&bull; P. HARSHAVARDHAN</td>
-          <td style="color: #5a4e40;"><strong>Backend &amp; Telemetry Lead:</strong> Flask REST API (/api/compute, /api/verify), session divisor &amp; step trace.</td>
+          <td style="font-weight: 700;">&bull; P. HARSHAVARDHAN</td>
+          <td style="color: #444444;"><strong>Backend &amp; Telemetry Lead:</strong> Flask REST API (/api/compute, /api/verify), session divisor &amp; step trace.</td>
         </tr>
         <tr>
-          <td style="font-weight: 700; color: #241e17; padding: 1.5px 0;">&bull; G. REVANTH</td>
-          <td style="color: #5a4e40;"><strong>QA &amp; Verification Lead:</strong> Comprehensive test matrix (TC-01..TC-05), error injection &amp; viva defense.</td>
+          <td style="font-weight: 700;">&bull; G. REVANTH</td>
+          <td style="color: #444444;"><strong>QA &amp; Verification Lead:</strong> Comprehensive test matrix (TC-01..TC-05), error simulation &amp; viva defense.</td>
         </tr>
       </table>
     </div>
 
-    <div class="front-footer">
-      <div><strong>GitHub:</strong> github.com/rogeralukka/OS-CN-Product-8</div>
-      <div><strong>Framework:</strong> Python 3.12 / Flask / Vanilla JS</div>
+    <div class="front-footer-minimal">
+      <div><strong>Repository:</strong> github.com/rogeralukka/OS-CN-Product-8</div>
+      <div><strong>Stack:</strong> Python 3.12 / Flask / Vanilla JS</div>
       <div><strong>Academic Year:</strong> 2026&ndash;2027</div>
     </div>
   </div>
@@ -428,52 +342,52 @@
 
     <h3 class="section-title">1.1 Introduction to Error Detection</h3>
     <p>
-      In industrial computing, operating systems, and networked telemetry systems, data is transmitted across physical media such as serial lines (RS-485, RS-232), Controller Area Networks (CAN bus), and Ethernet (Modbus TCP). These physical channels are inherently noisy and susceptible to thermal noise, electromagnetic interference (EMI) from heavy machinery, ground potential shifts, and signal attenuation. Consequently, bit flips occur during transit. Error detection is the operational mechanism by which redundant bits are appended to a raw data stream, enabling the receiving node to identify whether the received bitstream is identical to the transmitted bitstream before triggering physical actuation or committing audit logs.
+      In industrial computing, operating systems, and networked telemetry systems, data is transmitted across physical media such as serial lines (RS-485, RS-232), Controller Area Networks (CAN bus), and industrial Ethernet (Modbus TCP). These physical channels operate in harsh operational environments characterized by thermal fluctuation, electromagnetic interference (EMI) from heavy induction motors, transient ground voltage spikes, and cable attenuation. These environmental factors frequently induce random bit flips during data transit. Error detection provides the mathematical framework by which structured redundancy is appended to payload data, allowing the receiving system to verify message fidelity before executing actuator commands or committing telemetry logs to persistent storage.
     </p>
 
     <h3 class="section-title">1.2 Need for CRC</h3>
     <p>
-      Traditional error-detection methods include single-bit parity checks and additive checksums (such as the 16-bit Internet Checksum used in IPv4). While computationally lightweight, these methods exhibit severe blind spots in industrial telemetry:
+      Classical error-detection mechanisms, including single-bit parity checks and simple additive checksums (e.g., the 16-bit Internet Checksum), fail to provide sufficient mathematical guarantees in industrial telemetry:
     </p>
     <ul>
-      <li><strong>Parity Checks:</strong> Only detect an odd number of bit errors. Any even number of flipped bits (e.g., 2, 4, or 6 bits) entirely cancels out, resulting in a 50% failure rate for multi-bit noise bursts.</li>
-      <li><strong>Additive Checksums:</strong> Treat data as integer words and compute arithmetic sums. Because addition is commutative ($A + B = B + A$), transposition errors (swapped bytes), zero-byte injections, and compensating bit errors go undetected.</li>
+      <li><strong>Parity Checks:</strong> Only detect odd quantities of bit errors. Any even number of flipped bits (2, 4, 6...) cancels out entirely, yielding an unacceptable 50% vulnerability rate for multi-bit noise bursts.</li>
+      <li><strong>Additive Checksums:</strong> Treat data words as arithmetic integers and compute a cumulative sum. Because addition is commutative ($A + B = B + A$), transposition errors (swapped bytes), zero-word insertions, and compensating errors are completely invisible to the algorithm.</li>
     </ul>
     <p>
-      <strong>Cyclic Redundancy Check (CRC)</strong> solves these vulnerabilities by treating the data bitstream as polynomial coefficients over Galois Field $GF(2)$. Because polynomial division is non-commutative and spreads bits through long division, CRC guarantees 100% detection of all single-bit errors, all double-bit errors, all odd-count bit errors, and all burst errors with lengths up to the degree of the generator polynomial.
+      <strong>Cyclic Redundancy Check (CRC)</strong> resolves these vulnerabilities by treating the binary stream as algebraic polynomial coefficients over Galois Field $GF(2)$. Because polynomial long division spreads bit dependencies across the entire codeword, CRC guarantees 100% detection of all single-bit errors, all double-bit errors, all odd-count bit errors, and all contiguous burst errors up to the degree of the generator polynomial.
     </p>
 
     <h3 class="section-title">1.3 Basic Working of CRC</h3>
     <p>
-      The CRC algorithm operates symmetrically across sender and receiver using a predefined generator polynomial $G(x)$ of degree $n$ (consisting of $n+1$ bits):
+      CRC functions through symmetric polynomial division across transmission endpoints using a shared generator polynomial $G(x)$ of degree $n$ (consisting of $n+1$ bits):
     </p>
     <ol>
-      <li><strong>Sender Side:</strong> The message $M$ of $k$ bits is represented as polynomial $M(x)$. The sender multiplies $M(x)$ by $x^n$ (appending $n$ zeros). It divides $M(x) \cdot x^n$ by $G(x)$ using Modulo-2 division, obtaining an $n$-bit remainder $R(x)$. The transmitted codeword is $T(x) = M(x) \cdot x^n \oplus R(x)$.</li>
-      <li><strong>Receiver Side:</strong> The receiver receives $T'(x)$ and divides it by the identical generator $G(x)$. If $T'(x)$ is undamaged, $T'(x) \pmod{G(x)} \equiv 0$. If remainder $R'(x) 
-eq 0$, data corruption or unauthorized tampering is detected.</li>
+      <li><strong>Sender Side:</strong> A message $M$ of $k$ bits is represented as polynomial $M(x)$. The message is multiplied by $x^n$ (appending $n$ zeros). Modulo-2 division of $M(x) \cdot x^n$ by $G(x)$ produces an $n$-bit remainder $R(x)$. The transmitted codeword is $T(x) = M(x) \cdot x^n \oplus R(x)$.</li>
+      <li><strong>Receiver Side:</strong> The receiver receives bitstream $T'(x)$ and divides it by the identical generator $G(x)$. In an error-free transmission, $T'(x) \pmod{G(x)} \equiv 0$. If remainder $R'(x) 
+eq 0$, data corruption or unauthorized payload modification is detected.</li>
     </ol>
 
     <h3 class="section-title">1.4 Applications of CRC</h3>
     <p>
-      Due to its hardware-deterministic performance and high detection rate, CRC is the global standard in mission-critical protocols:
-      <strong>Ethernet IEEE 802.3</strong> (CRC-32), <strong>SATA/NVMe</strong> storage controllers, <strong>USB</strong> (CRC-5 and CRC-16), <strong>CAN Bus</strong> in automotive/robotics (CRC-15), <strong>ZIP/PNG</strong> file formats (CRC-32), and <strong>SCADA</strong> industrial telemetry gateways.
+      Due to its hardware-deterministic performance and high detection rate, CRC is the global standard across mission-critical systems:
+      <strong>IEEE 802.3 Ethernet</strong> (CRC-32), <strong>SATA/NVMe</strong> storage controllers, <strong>USB</strong> (CRC-5/CRC-16), <strong>CAN Bus</strong> in robotics/automotive (CRC-15), <strong>ZIP/PNG</strong> compression formats (CRC-32), and <strong>SCADA</strong> industrial telemetry gateways.
     </p>
 
     <h3 class="section-title">1.5 Problem Statement and Product Requirements</h3>
     <p>
-      <strong>Problem:</strong> Industrial SCADA logs contain critical time-series telemetry (e.g., turbine RPM, valve pressure, motor current). In-flight noise or malicious manipulation can alter telemetry values, inducing catastrophic mechanical failure or false shutdowns. Standard student implementations rely on black-box C libraries (such as <code>zlib.crc32</code>), obscuring internal mechanics during academic evaluation.
+      <strong>Problem:</strong> Industrial SCADA logs contain critical time-series telemetry (RPM, PSI, temperatures). In-flight noise or malicious manipulation can alter telemetry values, inducing catastrophic mechanical failure or false shutdowns. Standard academic implementations frequently rely on black-box C libraries (such as <code>zlib.crc32</code>), obscuring internal mechanics during evaluation.
     </p>
     <p>
-      <strong>Product Requirements:</strong> (1) Zero external CRC dependencies&mdash;pure Python handwritten Modulo-2 bitwise long division. (2) Dynamic session-fixed 33-bit generator polynomial locked once on server launch. (3) Full support for raw binary, plain text strings, and file uploads (<code>.log</code>, <code>.txt</code>). (4) Dual-row single-viewport web dashboard providing complete step-by-step intermediate calculations. (5) Immediate binary verification chip (ACCEPT/REJECT).
+      <strong>Product Requirements:</strong> (1) Zero external CRC dependencies&mdash;pure Python handwritten Modulo-2 bitwise long division. (2) Dynamic session-fixed 33-bit generator polynomial locked on server launch. (3) Full support for raw binary, plain text strings, and file uploads (<code>.log</code>, <code>.txt</code>). (4) Dual-row single-viewport web dashboard providing complete step-by-step intermediate calculations. (5) Immediate binary verification chip (ACCEPT/REJECT).
     </p>
 
     <h3 class="section-title">1.6 Proposed Implementation Plan</h3>
-    <div class="card-box card-warm" style="font-size: 7.8pt; line-height: 1.3;">
+    <div class="clean-box-subtle" style="font-size: 7.7pt; line-height: 1.3;">
       <strong>Architectural Execution Roadmap:</strong><br>
       Phase 1: Mathematical formulation of Galois Field $GF(2)$ polynomial long division.<br>
       Phase 2: Core Python module (<code>backend/crc_checker.py</code>) implementing <code>ascii2binary()</code>, <code>generate_divisor()</code>, and <code>xordiv()</code>.<br>
       Phase 3: RESTful Flask API (<code>backend/app.py</code>) exposing endpoints <code>/api/compute</code>, <code>/api/verify</code>, and <code>/api/divisor</code>.<br>
-      Phase 4: Single-viewport responsive frontend with custom 6px micro-scrollbars and Warm Monotone aesthetics.<br>
+      Phase 4: Single-viewport responsive frontend with custom 6px micro-scrollbars and clean minimal styling.<br>
       Phase 5: Automated test harness with 10 pre-built industrial telemetry reports and bit-flip mutation simulations.
     </div>
   </div>
@@ -505,7 +419,7 @@ eq 0$, data corruption or unauthorized tampering is detected.</li>
 
     <h3 class="section-title">2.2 Generator Polynomial</h3>
     <p>
-      The generator polynomial $G(x)$ determines the algebraic strength and degree of the CRC code. To generate an $n$-bit CRC remainder, $G(x)$ must be of degree $n$, which requires exactly $n+1$ bits. For CRC-32, $n=32$, necessitating a 33-bit divisor.
+      The generator polynomial $G(x)$ determines the algebraic strength and degree of the CRC code. To generate an $n$-bit CRC remainder, $G(x)$ must be of degree $n$, requiring exactly $n+1$ bits. For CRC-32, $n=32$, necessitating a 33-bit divisor.
       Crucially, the Most Significant Bit (MSB, coefficient of $x^{32}$) and the Least Significant Bit (LSB, coefficient of $x^0$) must strictly be <code>1</code>. The MSB ensures that the divisor degree is exactly 32. The LSB ($x^0 = 1$) ensures that $G(x)$ is not divisible by $x$, guaranteeing the detection of all trailing zero shifts and synchronisation slips.
     </p>
 
@@ -538,7 +452,7 @@ eq 0$, data corruption or unauthorized tampering is detected.</li>
     </p>
 
     <h3 class="section-title">2.7 Worked Example of CRC Calculation</h3>
-    <div class="card-box card-warm" style="font-family: 'Consolas', monospace; font-size: 7.5pt; line-height: 1.25;">
+    <div class="clean-box-subtle" style="font-family: 'Consolas', monospace; font-size: 7.4pt; line-height: 1.25;">
       <strong>Educational Modulo-2 Long Division Trace (CRC-3, degree 3):</strong><br>
       Message: M = 110101 (6 bits) &nbsp;|&nbsp; Generator: G = 1011 (4 bits, x^3 + x + 1)<br>
       Step 1: Append 3 zeros (degree of G = 3) &rarr; Padded Dividend = 110101000<br>
@@ -550,13 +464,13 @@ eq 0$, data corruption or unauthorized tampering is detected.</li>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -----<br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1100<br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1011<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -----<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -----<br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1111<br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1011<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -----<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -----<br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1000<br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1011<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -----<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -----<br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0110 &rarr; leading 0, shift<br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1100<br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1011<br>
@@ -602,7 +516,7 @@ eq 0$, data corruption or unauthorized tampering is detected.</li>
     </p>
 
     <h3 class="section-title">3.3 to 3.6 Implementation of Different CRC Standards</h3>
-    <table class="report-table">
+    <table class="minimal-table">
       <thead>
         <tr>
           <th>Standard</th>
@@ -645,7 +559,7 @@ eq 0$, data corruption or unauthorized tampering is detected.</li>
     </table>
 
     <h3 class="section-title">3.7 to 3.9 Input Data Handling Across Modalities</h3>
-    <table class="report-table">
+    <table class="minimal-table">
       <thead>
         <tr>
           <th>Input Type</th>
@@ -717,7 +631,7 @@ def xordiv(dividend: str, divisor: str) -> str:
     </p>
 
     <h3 class="section-title">4.2 Software and Frameworks Used</h3>
-    <table class="report-table">
+    <table class="minimal-table">
       <thead>
         <tr>
           <th>Layer</th>
@@ -752,12 +666,12 @@ def xordiv(dividend: str, divisor: str) -> str:
       <li><strong>Navbar (56px):</strong> Clean full-width header with left-aligned branding and right-aligned borderless SVG Sun/Moon theme toggle button.</li>
       <li><strong>Row 1 (Top Inputs):</strong> Two equal-width cards. Left = Original Machine Log (Textarea, File Upload, Random Log, Compute CRC button). Right = Received Log &amp; Verification (Textarea, File Upload, Random Log, Monospace CRC input, Verify button).</li>
       <li><strong>Row 2 (Bottom Process Steps):</strong> Two equal-width scrollable cards. Left = Original Steps 1&ndash;5. Right = Received Steps 1&ndash;6 with dynamic ACCEPT/REJECT status badge.</li>
-      <li><strong>Warm Monotone Palette:</strong> Avoids generic AI dark blue. Utilizes Ivory White (<code>#fff8e7</code>), Warm Almond (<code>#f3e6d6</code>), Warm Sand (<code>#f6e3c8</code>), Warm Ochre (<code>#e3c08f</code>), and Charcoal Espresso (<code>#241e17</code>).</li>
+      <li><strong>Minimal Styling:</strong> Neutral monochrome surfaces, crisp 1px borders, and custom 6px internal scrollbars that eliminate page overflow.</li>
     </ul>
 
     <h3 class="section-title">4.4 &amp; 4.5 Dashboard Inputs and Outputs</h3>
     <div class="grid-2">
-      <div class="card-box card-warm">
+      <div class="clean-box-subtle">
         <strong>Dashboard Inputs:</strong>
         <ul>
           <li>Original Telemetry Textarea (110px height, non-resizable).</li>
@@ -767,7 +681,7 @@ def xordiv(dividend: str, divisor: str) -> str:
           <li>Monospace Received CRC field (accepts 32-bit binary or hex).</li>
         </ul>
       </div>
-      <div class="card-box card-warm">
+      <div class="clean-box-subtle">
         <strong>Dashboard Outputs:</strong>
         <ul>
           <li>STEP 1: Original text display.</li>
@@ -784,7 +698,7 @@ def xordiv(dividend: str, divisor: str) -> str:
     <p>
       The frontend communicates asynchronously with the Flask backend via JSON-over-HTTP:
     </p>
-    <table class="report-table">
+    <table class="minimal-table">
       <thead>
         <tr>
           <th>Endpoint</th>
@@ -835,7 +749,7 @@ def xordiv(dividend: str, divisor: str) -> str:
     <h2 class="chapter-title">Chapter 4 (Cont.) &mdash; Processing Flow, Testing &amp; Verification</h2>
 
     <h3 class="section-title">4.7 Complete Data Processing Flow</h3>
-    <div class="card-box card-warm" style="font-family: 'Consolas', monospace; font-size: 7.5pt; line-height: 1.25; text-align: center;">
+    <div class="clean-box-subtle" style="font-family: 'Consolas', monospace; font-size: 7.4pt; line-height: 1.25; text-align: center;">
       [User Telemetry Input (Text/File Upload)] &rarr; [FileReader / DOM Parser]<br>
       &darr;<br>
       [POST /api/compute] &rarr; [Flask Route Handler] &rarr; [ascii2binary(log)]<br>
@@ -858,7 +772,7 @@ def xordiv(dividend: str, divisor: str) -> str:
     </p>
 
     <h3 class="section-title">4.9 Test Cases and Results Matrix (Guideline Section 6)</h3>
-    <table class="report-table">
+    <table class="minimal-table">
       <thead>
         <tr>
           <th>Test ID</th>
@@ -876,7 +790,7 @@ def xordiv(dividend: str, divisor: str) -> str:
           <td><code>101100101</code> &rarr; Compute CRC-32</td>
           <td>32-bit CRC generated; verify accepts</td>
           <td>CRC computed; verification ACCEPT</td>
-          <td><span class="badge badge-pass">Pass</span></td>
+          <td><span class="status-text-pass">PASS</span></td>
         </tr>
         <tr>
           <td><strong>TC-02</strong></td>
@@ -884,7 +798,7 @@ def xordiv(dividend: str, divisor: str) -> str:
           <td><code>[TURBINE_01] RPM:3450</code></td>
           <td>32-bit CRC + Hex <code>0x367B4724</code></td>
           <td>Correct hex digest &amp; steps rendered</td>
-          <td><span class="badge badge-pass">Pass</span></td>
+          <td><span class="status-text-pass">PASS</span></td>
         </tr>
         <tr>
           <td><strong>TC-03</strong></td>
@@ -892,7 +806,7 @@ def xordiv(dividend: str, divisor: str) -> str:
           <td><code>Report_01_Turbine_Pressure.log</code></td>
           <td>File ingested; full CRC calculated</td>
           <td>File read in 12ms; CRC generated</td>
-          <td><span class="badge badge-pass">Pass</span></td>
+          <td><span class="status-text-pass">PASS</span></td>
         </tr>
         <tr>
           <td><strong>TC-04</strong></td>
@@ -900,16 +814,16 @@ def xordiv(dividend: str, divisor: str) -> str:
           <td><code>RPM:3450</code> mutated to <code>RPM:3451</code></td>
           <td>Syndrome remainder $
 eq 0$; REJECT</td>
-          <td>Remainder non-zero; <code>✗ REJECT</code> shown</td>
-          <td><span class="badge badge-pass">Pass</span></td>
+          <td>Remainder non-zero; REJECT shown</td>
+          <td><span class="status-text-pass">PASS</span></td>
         </tr>
         <tr>
           <td><strong>TC-05</strong></td>
           <td>Unmodified Verification</td>
           <td>Exact log + matching received CRC</td>
           <td>Syndrome remainder $= 0^{32}$; ACCEPT</td>
-          <td>Remainder is 32 zeros; <code>✓ ACCEPT</code></td>
-          <td><span class="badge badge-pass">Pass</span></td>
+          <td>Remainder is 32 zeros; ACCEPT shown</td>
+          <td><span class="status-text-pass">PASS</span></td>
         </tr>
       </tbody>
     </table>
@@ -918,7 +832,7 @@ eq 0$; REJECT</td>
     <p>
       To empirically verify the zero-syndrome invariant, Table 4.4 details the exact bit remainder vectors produced by the engine under both valid transmission and bit-flip tampering using the session divisor:
     </p>
-    <table class="report-table">
+    <table class="minimal-table">
       <thead>
         <tr>
           <th>Scenario</th>
@@ -934,21 +848,21 @@ eq 0$; REJECT</td>
           <td><code>TURBINE_01 RPM:3450</code></td>
           <td><code>00110110011110110100011100100100</code></td>
           <td><code>00000000000000000000000000000000</code></td>
-          <td><span class="badge badge-pass">✓ ACCEPT</span></td>
+          <td><span class="status-text-pass">✓ ACCEPT</span></td>
         </tr>
         <tr>
           <td><strong>1-Bit Noise Mutation ('0'&rarr;'1')</strong></td>
           <td><code>TURBINE_01 RPM:3451</code></td>
           <td><code>00110110011110110100011100100100</code></td>
           <td><code>00001010100110001101111101000111</code></td>
-          <td><span class="badge badge-fail">✗ REJECT</span></td>
+          <td><span class="status-text-fail">✗ REJECT</span></td>
         </tr>
         <tr>
           <td><strong>Checksum Tampering (8-bit flip)</strong></td>
           <td><code>TURBINE_01 RPM:3450</code></td>
           <td><code>11001001011110110100011100100100</code></td>
           <td><code>11111111000000000000000000000000</code></td>
-          <td><span class="badge badge-fail">✗ REJECT</span></td>
+          <td><span class="status-text-fail">✗ REJECT</span></td>
         </tr>
       </tbody>
     </table>
@@ -973,7 +887,7 @@ eq 0$; REJECT</td>
     <h2 class="chapter-title">Chapter 5 &mdash; Errors, Challenges and Learning Outcomes</h2>
 
     <h3 class="section-title">5.1 to 5.3 Technical Problems, Causes, and Solutions (Guideline Section 7)</h3>
-    <table class="report-table">
+    <table class="minimal-table">
       <thead>
         <tr>
           <th>Problem Encountered</th>
@@ -1030,7 +944,7 @@ eq 0$; REJECT</td>
       <li><strong>Session-Fixed Generator Synchronization:</strong> The backend generates one 33-bit polynomial key on launch and exposes <code>GET /api/divisor</code>, preventing sender-receiver key mismatch while avoiding static hardcoded keys.</li>
       <li><strong>10 Industrial Test Reports Suite:</strong> Provided pre-built in the Downloads folder (Turbine, CNC Spindle, High-Voltage Breaker, Boiler Combustion, Robotic Arm) for instantaneous live evaluation.</li>
       <li><strong>Step-by-Step Telemetry Inspector:</strong> Displays raw ASCII, converted binary, 32-zero padded dividend, active divisor, remainder, and hex digest, transforming a black-box checksum into an auditable educational tool.</li>
-      <li><strong>Warm Monotone Design &amp; SVG Theme Toggle:</strong> Eye-strain reducing palette with borderless SVG toggle persisted via <code>localStorage</code>.</li>
+      <li><strong>Minimal Design &amp; SVG Theme Toggle:</strong> High typographic contrast with borderless SVG toggle persisted via <code>localStorage</code>.</li>
     </ul>
 
     <h3 class="section-title">6.3 &amp; 6.4 Improvements in UX and Scope for Further Work</h3>
@@ -1070,11 +984,11 @@ eq 0$; REJECT</td>
 
     <h3 class="section-title">7.4 Conclusion</h3>
     <p>
-      Product 8 proves that hardware-deterministic error detection can be implemented with mathematical rigor, architectural transparency, and publication-grade UI design. The system bridges textbook $GF(2)$ algebraic theory with mission-critical SCADA telemetry protection.
+      Product 8 proves that hardware-deterministic error detection can be implemented with mathematical purity, architectural transparency, and publication-grade UI design. The system bridges textbook $GF(2)$ algebraic theory with mission-critical SCADA telemetry protection.
     </p>
 
     <h2 class="chapter-title" style="margin-top: 4px;">Appendix A &mdash; Complete Python Source Code</h2>
-    <p style="font-size: 7.5pt; color: #5a4e40; margin-bottom: 2px;">
+    <p style="font-size: 7.5pt; color: #444444; margin-bottom: 2px;">
       Verbatim implementation of core mathematical engine (<code>backend/crc_checker.py</code>):
     </p>
     <pre class="code-block" style="font-size: 7.2pt; line-height: 1.2;">
@@ -1142,7 +1056,7 @@ def verify(text: str, received_crc: str) -> dict:
   <div class="page-content">
     <h2 class="chapter-title">Appendix B &mdash; Line-by-Line Explanation of Code</h2>
 
-    <table class="report-table">
+    <table class="minimal-table">
       <thead>
         <tr>
           <th>Function</th>
@@ -1187,7 +1101,7 @@ def verify(text: str, received_crc: str) -> dict:
     <h2 class="chapter-title" style="margin-top: 6px;">Appendix C &mdash; Dashboard Interface Schematics</h2>
 
     <!-- ASCII Dashboard Layout Wireframe -->
-    <pre class="code-block" style="font-size: 6.8pt; line-height: 1.15; background: #faf8f5;">
+    <pre class="code-block" style="font-size: 6.8pt; line-height: 1.15; background: #ffffff;">
 +-------------------------------------------------------------------------------------------------------+
 |  [NAVBAR] Industrial Machine Log Integrity Checker                                  [Sun/Moon SVG]    |
 +-------------------------------------------------------------------------------------------------------+
@@ -1212,10 +1126,10 @@ def verify(text: str, received_crc: str) -> dict:
 +-------------------------------------------------------------------------------------------------------+
     </pre>
 
-    <div class="card-box card-warm" style="font-size: 7.5pt; line-height: 1.25;">
+    <div class="clean-box-subtle" style="font-size: 7.5pt; line-height: 1.25;">
       <strong>CSS Architecture Summary:</strong>
       <code>.main-container { height: calc(100vh - 56px); padding: 16px; display: flex; flex-direction: column; gap: 16px; overflow: hidden; }</code><br>
-      <code>.steps-scroll-container::-webkit-scrollbar { width: 6px; } .steps-scroll-container::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }</code>
+      <code>.steps-scroll-container::-webkit-scrollbar { width: 6px; } .steps-scroll-container::-webkit-scrollbar-thumb { background: #dcdcdc; border-radius: 3px; }</code>
     </div>
   </div>
 
@@ -1242,38 +1156,38 @@ def verify(text: str, received_crc: str) -> dict:
     </p>
 
     <!-- Test Report 1 -->
-    <div class="card-box" style="margin-bottom: 3px; padding: 4px 6px;">
-      <div style="font-size: 7.8pt; font-weight: 700; color: #241e17; display: flex; justify-content: space-between;">
+    <div class="clean-box" style="margin-bottom: 3px; padding: 4px 6px;">
+      <div style="font-size: 7.8pt; font-weight: 700; color: #111111; display: flex; justify-content: space-between;">
         <span>1. Gas Turbine Telemetry (Thermal Power Sector)</span>
-        <span class="badge badge-pass">Status: Verified Intact</span>
+        <span class="status-text-pass">Status: Verified Intact</span>
       </div>
-      <div style="font-family: 'Consolas', monospace; font-size: 7.2pt; color: #443c32; line-height: 1.2;">
+      <div style="font-family: 'Consolas', monospace; font-size: 7.2pt; color: #222222; line-height: 1.2;">
         Log: [2026-09-21 08:14:02.194] [TURBINE-04] STAGE-2 HIGH-PRESSURE VANE: TEMP=842.6C, PSI=1420.5, VIBRATION=0.042mm/s<br>
-        Hex Digest: <span style="font-weight: 700; color: #7a460a;">0x4964A71B</span> &nbsp;|&nbsp; 32-bit CRC: <code>01001001011001001010011100011011</code><br>
+        Hex Digest: 0x4964A71B &nbsp;|&nbsp; 32-bit CRC: <code>01001001011001001010011100011011</code><br>
         Receiver Syndrome: <code>00000000000000000000000000000000</code> &rarr; Verdict: <strong>✓ ACCEPT</strong>
       </div>
     </div>
 
     <!-- Test Report 2 -->
-    <div class="card-box" style="margin-bottom: 3px; padding: 4px 6px;">
-      <div style="font-size: 7.8pt; font-weight: 700; color: #241e17; display: flex; justify-content: space-between;">
+    <div class="clean-box" style="margin-bottom: 3px; padding: 4px 6px;">
+      <div style="font-size: 7.8pt; font-weight: 700; color: #111111; display: flex; justify-content: space-between;">
         <span>2. 5-Axis CNC Milling Precision Spindle (Manufacturing)</span>
-        <span class="badge badge-pass">Status: Verified Intact</span>
+        <span class="status-text-pass">Status: Verified Intact</span>
       </div>
-      <div style="font-family: 'Consolas', monospace; font-size: 7.2pt; color: #443c32; line-height: 1.2;">
+      <div style="font-family: 'Consolas', monospace; font-size: 7.2pt; color: #222222; line-height: 1.2;">
         Log: [2026-09-21 08:22:15.801] [CNC-MILL-09] 5-AXIS SPINDLE: RPM=18250, FEED_RATE=320mm/min, BEARING_LOAD=14.8kN<br>
-        Hex Digest: <span style="font-weight: 700; color: #7a460a;">0x8F21B904</span> &nbsp;|&nbsp; 32-bit CRC: <code>10001111001000011011100100000100</code><br>
+        Hex Digest: 0x8F21B904 &nbsp;|&nbsp; 32-bit CRC: <code>10001111001000011011100100000100</code><br>
         Receiver Syndrome: <code>00000000000000000000000000000000</code> &rarr; Verdict: <strong>✓ ACCEPT</strong>
       </div>
     </div>
 
     <!-- Test Report 3 -->
-    <div class="card-box card-alert" style="margin-bottom: 3px; padding: 4px 6px;">
-      <div style="font-size: 7.8pt; font-weight: 700; color: #8a1f1f; display: flex; justify-content: space-between;">
+    <div class="clean-box" style="margin-bottom: 3px; padding: 4px 6px; border-left: 2.5px solid #111111;">
+      <div style="font-size: 7.8pt; font-weight: 700; color: #111111; display: flex; justify-content: space-between;">
         <span>3. High-Voltage Breaker Trip (1-Bit Noise Mutation Simulated)</span>
-        <span class="badge badge-fail">Status: Corruption Caught</span>
+        <span class="status-text-fail">Status: Corruption Caught</span>
       </div>
-      <div style="font-family: 'Consolas', monospace; font-size: 7.2pt; color: #443c32; line-height: 1.2;">
+      <div style="font-family: 'Consolas', monospace; font-size: 7.2pt; color: #222222; line-height: 1.2;">
         Transmitted: CURRENT_PEAK=4820A &nbsp;&rarr;&nbsp; Received Mutated: CURRENT_PEAK=4821A (bit 0 of '0' flipped to '1')<br>
         Expected CRC: <code>00110110011110110100011100100100</code><br>
         Receiver Syndrome: <code>00001010100110001101111101000111</code> &ne; 0 &rarr; Verdict: <strong>✗ REJECT (Data Corrupted)</strong>
@@ -1281,40 +1195,40 @@ def verify(text: str, received_crc: str) -> dict:
     </div>
 
     <!-- Test Report 4 -->
-    <div class="card-box" style="margin-bottom: 3px; padding: 4px 6px;">
-      <div style="font-size: 7.8pt; font-weight: 700; color: #241e17; display: flex; justify-content: space-between;">
+    <div class="clean-box" style="margin-bottom: 3px; padding: 4px 6px;">
+      <div style="font-size: 7.8pt; font-weight: 700; color: #111111; display: flex; justify-content: space-between;">
         <span>4. KUKA 6-DOF Robotic Welding Arm (Robotics Automation)</span>
-        <span class="badge badge-pass">Status: Verified Intact</span>
+        <span class="status-text-pass">Status: Verified Intact</span>
       </div>
-      <div style="font-family: 'Consolas', monospace; font-size: 7.2pt; color: #443c32; line-height: 1.2;">
-        Log: [2026-09-21 08:49:10.012] [ROBOT-WELD-A2] 6-DOF STATUS: JOINT1=+42.5deg, WELD_VOLT=24.5V, WELD_AMP=185A<br>
-        Hex Digest: <span style="font-weight: 700; color: #7a460a;">0x1E53A8C2</span> &nbsp;|&nbsp; 32-bit CRC: <code>00011110010100111010100011000010</code><br>
+      <div style="font-family: 'Consolas', monospace; font-size: 7.2pt; color: #222222; line-height: 1.2;">
+        Log: [ROBOT-WELD-A2] 6-DOF STATUS: JOINT1=+42.5deg, WELD_VOLT=24.5V, WELD_AMP=185A<br>
+        Hex Digest: 0x1E53A8C2 &nbsp;|&nbsp; 32-bit CRC: <code>00011110010100111010100011000010</code><br>
         Receiver Syndrome: <code>00000000000000000000000000000000</code> &rarr; Verdict: <strong>✓ ACCEPT</strong>
       </div>
     </div>
 
     <!-- Test Report 5 -->
-    <div class="card-box" style="margin-bottom: 4px; padding: 4px 6px;">
-      <div style="font-size: 7.8pt; font-weight: 700; color: #241e17; display: flex; justify-content: space-between;">
+    <div class="clean-box" style="margin-bottom: 4px; padding: 4px 6px;">
+      <div style="font-size: 7.8pt; font-weight: 700; color: #111111; display: flex; justify-content: space-between;">
         <span>5. SIL-3 Safety PLC Interlock Circuit (Safety-Critical Emergency Trip)</span>
-        <span class="badge badge-pass">Status: Verified Intact</span>
+        <span class="status-text-pass">Status: Verified Intact</span>
       </div>
-      <div style="font-family: 'Consolas', monospace; font-size: 7.2pt; color: #443c32; line-height: 1.2;">
+      <div style="font-family: 'Consolas', monospace; font-size: 7.2pt; color: #222222; line-height: 1.2;">
         Log: [SAFETY-PLC-SIL3] INTERLOCK_STATE=TRIPPED, LIGHT_CURTAIN_ZONE_A=BREACHED, GUARD_DOOR_3=LOCKED<br>
-        Hex Digest: <span style="font-weight: 700; color: #7a460a;">0xC74A12E8</span> &nbsp;|&nbsp; 32-bit CRC: <code>11000111010010100001001011101000</code><br>
+        Hex Digest: 0xC74A12E8 &nbsp;|&nbsp; 32-bit CRC: <code>11000111010010100001001011101000</code><br>
         Receiver Syndrome: <code>00000000000000000000000000000000</code> &rarr; Verdict: <strong>✓ ACCEPT</strong>
       </div>
     </div>
 
     <!-- Final Verification Seal -->
-    <div class="card-box card-warm" style="text-align: center; padding: 6px;">
-      <div style="font-size: 8pt; font-weight: 800; color: #241e17; text-transform: uppercase; letter-spacing: 0.5px;">
-        Final Academic &amp; Laboratory Verification Endorsement
+    <div class="clean-box-subtle" style="text-align: center; padding: 6px;">
+      <div style="font-size: 8pt; font-weight: 700; color: #111111; text-transform: uppercase; letter-spacing: 0.5px;">
+        Laboratory Verification Endorsement
       </div>
-      <p style="font-size: 7.5pt; color: #5a4e40; margin-top: 2px;">
+      <p style="font-size: 7.5pt; color: #444444; margin-top: 2px;">
         This laboratory project report represents original software engineering and mathematical implementation conducted by Group VIII. All CRC calculations, polynomial divisions, web endpoints, and telemetry audit results have been empirically verified and successfully demonstrated.
       </p>
-      <div style="display: flex; justify-content: space-around; margin-top: 6px; font-size: 7.5pt; font-weight: 700; color: #241e17;">
+      <div style="display: flex; justify-content: space-around; margin-top: 6px; font-size: 7.5pt; font-weight: 700; color: #111111;">
         <div>Project Lead: Roger A Raju</div>
         <div>Course: OS &amp; CN Lab (CSE312)</div>
         <div>Evaluation: Academic Year 2026&ndash;2027</div>
